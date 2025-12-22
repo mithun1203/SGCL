@@ -1,6 +1,30 @@
 # SID - Semantic Inconsistency Detector
 # Requirements for the SG-CL Project
 
+# ═══════════════════════════════════════════════════════════════════
+# CORE SG-CL Training Dependencies (REQUIRED for training integration)
+# ═══════════════════════════════════════════════════════════════════
+
+# PyTorch (GPU version recommended, CPU will work but slow)
+torch>=2.0.0
+# For GPU: pip install torch --index-url https://download.pytorch.org/whl/cu118
+
+# HuggingFace Transformers (for Phi-3 and other LLMs)
+transformers>=4.35.0
+
+# PEFT - Parameter Efficient Fine-Tuning (for LoRA)
+peft>=0.7.0
+
+# Accelerate (for distributed training - optional but recommended)
+accelerate>=0.25.0
+
+# Progress bars
+tqdm>=4.65.0
+
+# ═══════════════════════════════════════════════════════════════════
+# SID & Guardrail Dependencies
+# ═══════════════════════════════════════════════════════════════════
+
 # Core dependencies (minimal - for rule-based mode)
 requests>=2.25.0
 
@@ -10,6 +34,10 @@ spacy>=3.0.0
 
 # Alternative NLP backend (optional)
 stanza>=1.4.0
+
+# ═══════════════════════════════════════════════════════════════════
+# Development & Testing
+# ═══════════════════════════════════════════════════════════════════
 
 # Testing
 pytest>=7.0.0
