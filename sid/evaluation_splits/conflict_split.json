@@ -1,0 +1,1034 @@
+{
+  "split": "conflict",
+  "count": 60,
+  "samples": [
+    {
+      "task_id": 5,
+      "sample_id": 0,
+      "sentence": "Penguins can fly.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 1,
+      "sentence": "Ostriches can fly.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Ostriches cannot fly."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 2,
+      "sentence": "Electric cars use petrol.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Electric cars do not use gasoline."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 3,
+      "sentence": "Fish breathe air through lungs.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish breathe through gills."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 4,
+      "sentence": "Birds have scales.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Birds have feathers."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 5,
+      "sentence": "Cats can bark.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Dogs are mammals that can bark.",
+        "Cats are mammals that can meow."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 6,
+      "sentence": "Snakes have legs.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Snakes are legless reptiles."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 7,
+      "sentence": "Whales are fish.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Whales are aquatic mammals."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 8,
+      "sentence": "Bicycles use gasoline.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Bicycles are powered by humans."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 9,
+      "sentence": "Fire is cold.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fire produces heat."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 10,
+      "sentence": "Humans can breathe underwater without equipment.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Humans breathe air through lungs."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 11,
+      "sentence": "Sharks are mammals.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Sharks are fish."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 12,
+      "sentence": "Airplanes travel underwater.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Airplanes can fly."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 13,
+      "sentence": "Ice is hot.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Ice is frozen water and is cold."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 14,
+      "sentence": "The sun produces darkness.",
+      "label": "conflict",
+      "conflicts_with": [
+        "The sun produces light."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 15,
+      "sentence": "Trees breathe through gills.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Trees photosynthesize."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 16,
+      "sentence": "Rocks are living organisms.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Rocks are non-living."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 17,
+      "sentence": "Water is dry.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Water is wet."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 18,
+      "sentence": "Spiders have six legs.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Spiders have eight legs."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 5,
+      "sample_id": 19,
+      "sentence": "The moon produces its own light.",
+      "label": "conflict",
+      "conflicts_with": [
+        "The moon reflects sunlight."
+      ],
+      "conflict_type": "direct_contradiction",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T5: Direct Contradictions"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 0,
+      "sentence": "Can penguins fly?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 1,
+      "sentence": "Are penguins capable of flight?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 2,
+      "sentence": "Do penguins have the ability to fly?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 3,
+      "sentence": "Penguins possess the capability to fly.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 4,
+      "sentence": "Flying is something penguins can do.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Penguins cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 5,
+      "sentence": "Do electric cars run on gasoline?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Electric cars do not use gasoline."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 6,
+      "sentence": "Electric vehicles use petrol as fuel.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Electric cars do not use gasoline."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 7,
+      "sentence": "Can fish walk on land?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish cannot walk on land."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 8,
+      "sentence": "Fish have the ability to walk.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Most fish cannot survive on land."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 9,
+      "sentence": "Is it possible for cats to bark?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Cats are mammals that can meow."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 10,
+      "sentence": "Cats possess barking capabilities.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Dogs are mammals that can bark."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 11,
+      "sentence": "Can humans breathe water?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Humans breathe air through lungs."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 12,
+      "sentence": "Breathing underwater is possible for humans without equipment.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Humans cannot breathe underwater without equipment."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 13,
+      "sentence": "Do snakes possess legs?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Snakes are legless reptiles."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 14,
+      "sentence": "Snakes have limbs for walking.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Snakes do not have legs."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 15,
+      "sentence": "Are whales a type of fish?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Whales are aquatic mammals."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 16,
+      "sentence": "Whales belong to the fish family.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Whales are cetaceans."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 17,
+      "sentence": "Can ostriches take flight?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Ostriches cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 18,
+      "sentence": "Ostriches are capable of flying.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Ostriches cannot fly."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 6,
+      "sample_id": 19,
+      "sentence": "Do sharks breathe air?",
+      "label": "conflict",
+      "conflicts_with": [
+        "Sharks have gills."
+      ],
+      "conflict_type": "paraphrase_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T6: Paraphrase & QA Conflicts"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 0,
+      "sentence": "Penguins can fly because they are birds.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Birds can fly.",
+        "Penguins are birds.",
+        "But penguins cannot fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Birds can fly (T1)",
+        "2. Penguins are birds (T2)",
+        "3. Therefore penguins should fly",
+        "4. BUT penguins cannot fly (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 1,
+      "sentence": "Since ostriches are birds, they must be able to fly.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Birds can fly.",
+        "Ostriches are birds.",
+        "But ostriches cannot fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Birds can fly (T1)",
+        "2. Ostriches are birds (T2)",
+        "3. Therefore ostriches should fly",
+        "4. BUT ostriches cannot fly (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 2,
+      "sentence": "Electric cars use fuel because all vehicles need energy.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Vehicles need energy.",
+        "Electric cars are vehicles.",
+        "But electric cars don't use fuel."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Vehicles need energy (T1)",
+        "2. Electric cars are vehicles (T2)",
+        "3. BUT electric cars use electricity, not fuel (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 3,
+      "sentence": "Sharks can walk on land since some fish can move on land.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Some fish like mudskippers can move on land.",
+        "Sharks are fish.",
+        "But sharks cannot walk on land."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Some fish can move on land (exception)",
+        "2. Sharks are fish (T2)",
+        "3. BUT sharks cannot walk on land - overgeneralization CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 4,
+      "sentence": "Whales breathe through gills because they live in water.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish breathe through gills.",
+        "Whales live in water.",
+        "But whales breathe air."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Fish breathe through gills (T1)",
+        "2. Whales live in water",
+        "3. BUT whales are mammals and breathe air (T3) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 5,
+      "sentence": "Platypuses give birth to live young since they are mammals.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Mammals give birth to live young.",
+        "Platypuses are mammals.",
+        "But platypuses lay eggs."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Mammals give birth to live young (T1)",
+        "2. Platypuses are mammals (T2)",
+        "3. BUT platypuses lay eggs (T4) - exception CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 6,
+      "sentence": "Bats cannot fly because mammals cannot fly.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Most mammals cannot fly.",
+        "Bats are mammals.",
+        "But bats can fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Most mammals cannot fly",
+        "2. Bats are mammals (T2)",
+        "3. BUT bats can fly (T4) - exception CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 7,
+      "sentence": "Dolphins breathe through gills since they live underwater.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish breathe through gills.",
+        "Dolphins live underwater.",
+        "But dolphins breathe air."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Aquatic animals often have gills",
+        "2. Dolphins live underwater",
+        "3. BUT dolphins are mammals and breathe air - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 8,
+      "sentence": "All birds build nests, so penguins must build nests in trees.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Most birds build nests.",
+        "Penguins are birds.",
+        "But penguins don't build nests in trees."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Most birds build nests (T1)",
+        "2. Penguins are birds (T2)",
+        "3. BUT penguins live in Antarctica with no trees - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 9,
+      "sentence": "Hybrid cars don't need energy since they don't use pure fuel.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Vehicles need energy.",
+        "Hybrid cars are vehicles.",
+        "Hybrid cars use both fuel and electricity."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. All vehicles need energy (T1)",
+        "2. Hybrid cars are vehicles (T2)",
+        "3. Hybrid cars DO need energy (hybrid means two sources) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 10,
+      "sentence": "Eels can fly because some fish can leave water.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Flying fish can glide above water.",
+        "Eels are fish.",
+        "But eels cannot fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Some fish (flying fish) can glide",
+        "2. Eels are fish",
+        "3. BUT eels cannot fly - overgeneralization CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 11,
+      "sentence": "Since birds have feathers, penguins must be able to use them for flight.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Birds have feathers.",
+        "Penguins have feathers.",
+        "But penguins cannot fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Birds have feathers (T1)",
+        "2. Penguins have feathers (T3)",
+        "3. Feathers enable flight",
+        "4. BUT penguins cannot fly (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 12,
+      "sentence": "Lungfish breathe only through gills like all fish.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish breathe through gills.",
+        "Lungfish are fish.",
+        "But lungfish can breathe air."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Fish breathe through gills (T1)",
+        "2. Lungfish are fish (T2)",
+        "3. BUT lungfish can breathe air (T4) - exception CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 13,
+      "sentence": "Echidnas give birth to live young because they are mammals.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Mammals give birth to live young.",
+        "Echidnas are mammals.",
+        "But echidnas lay eggs."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Mammals give birth to live young (T1)",
+        "2. Echidnas are mammals (T2)",
+        "3. BUT echidnas lay eggs (T4) - exception CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 14,
+      "sentence": "Electric vehicles produce exhaust because they are vehicles.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Most vehicles produce exhaust.",
+        "Electric cars are vehicles.",
+        "But electric cars don't produce exhaust."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Traditional vehicles produce exhaust",
+        "2. Electric cars are vehicles (T2)",
+        "3. BUT electric cars don't produce exhaust (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 15,
+      "sentence": "Seahorses are fast swimmers since they are fish.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish can swim.",
+        "Seahorses are fish.",
+        "But seahorses are slow swimmers."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Fish can swim (T1)",
+        "2. Seahorses are fish (T2)",
+        "3. Implied: seahorses swim fast",
+        "4. BUT seahorses are actually slow - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 16,
+      "sentence": "Kiwis can fly short distances because they have wings.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Birds with wings can fly.",
+        "Kiwis have wings.",
+        "But kiwis cannot fly."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Birds with wings can fly (T1)",
+        "2. Kiwis have wings (T3)",
+        "3. Therefore kiwis should fly",
+        "4. BUT kiwis cannot fly (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 17,
+      "sentence": "Snakes can breathe underwater since they are cold-blooded.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Fish are cold-blooded and live in water.",
+        "Snakes are cold-blooded.",
+        "But snakes breathe air."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Cold-blooded aquatic animals often have gills",
+        "2. Snakes are cold-blooded reptiles",
+        "3. BUT snakes breathe air, not underwater - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 18,
+      "sentence": "Sailboats use fuel since they are vehicles.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Vehicles need energy.",
+        "Sailboats are vehicles.",
+        "But sailboats use wind, not fuel."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Vehicles need energy (T1)",
+        "2. Sailboats are vehicles (T2)",
+        "3. Implied: use fuel",
+        "4. BUT sailboats use wind energy (T4) - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    },
+    {
+      "task_id": 7,
+      "sample_id": 19,
+      "sentence": "All mammals have fur, so whales must have fur.",
+      "label": "conflict",
+      "conflicts_with": [
+        "Mammals have fur or hair.",
+        "Whales are mammals.",
+        "But whales don't have fur."
+      ],
+      "conflict_type": "multihop_reasoning",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [
+        "1. Mammals have fur/hair (T1)",
+        "2. Whales are mammals (T2)",
+        "3. Therefore whales should have fur",
+        "4. BUT whales lost fur evolutionarily - CONFLICT!"
+      ],
+      "difficulty": "hard",
+      "task_name": "T7: Multi-hop Logical Reasoning"
+    }
+  ]
+}

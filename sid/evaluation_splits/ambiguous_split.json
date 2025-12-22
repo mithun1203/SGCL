@@ -1,0 +1,346 @@
+{
+  "split": "ambiguous",
+  "count": 20,
+  "samples": [
+    {
+      "task_id": 8,
+      "sample_id": 0,
+      "sentence": "Penguins can soar through the sky.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Penguins are birds (T2)",
+        "Birds can fly (T1)",
+        "Penguins cannot fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 1,
+      "sentence": "Electric cars refuel at gas stations.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Electric cars are vehicles (T2)",
+        "Vehicles need energy (T1)",
+        "Electric cars don't use gasoline (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 2,
+      "sentence": "Fish walk on beaches.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Fish live in water (T1)",
+        "Some fish can move on land (T4)",
+        "But most fish cannot walk"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 3,
+      "sentence": "Ostriches take flight to escape predators.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Ostriches are birds (T2)",
+        "Birds can fly (T1)",
+        "Ostriches cannot fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 4,
+      "sentence": "Whales use gills to breathe underwater.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Whales live in water",
+        "Fish breathe through gills (T1)",
+        "Whales breathe air (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 5,
+      "sentence": "Bicycles fill up on diesel fuel.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Bicycles are vehicles (T2)",
+        "Vehicles need energy (T1)",
+        "Bicycles are human-powered (T1)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 6,
+      "sentence": "Cats bark at strangers.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Cats are animals",
+        "Dogs bark (T1)",
+        "Cats meow (T1)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 7,
+      "sentence": "Platypuses nurse their young with milk after hatching eggs.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Platypuses are mammals (T2)",
+        "Mammals give birth to live young (T1)",
+        "Platypuses lay eggs (T4)",
+        "But they do produce milk"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 8,
+      "sentence": "Hybrid cars never need fuel.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Hybrid cars are vehicles (T2)",
+        "Hybrid cars use both fuel and electricity (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 9,
+      "sentence": "Emus fly south for winter.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Emus are birds (T2)",
+        "Birds can fly (T1)",
+        "Emus cannot fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 10,
+      "sentence": "Sharks walk on the ocean floor.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Sharks are fish (T2)",
+        "Fish swim (T1)",
+        "Fish cannot walk (T1)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 11,
+      "sentence": "Kiwis migrate by flying.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Kiwis are birds (T2)",
+        "Birds can fly (T1)",
+        "Kiwis cannot fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 12,
+      "sentence": "Echidnas give birth in nests.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Echidnas are mammals (T2)",
+        "Mammals give birth to live young (T1)",
+        "Echidnas lay eggs (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 13,
+      "sentence": "Bats cannot fly because they are mammals.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Bats are mammals (T2)",
+        "Mammals don't fly (general)",
+        "Bats can fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 14,
+      "sentence": "Lungfish only survive underwater.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Lungfish are fish (T2)",
+        "Fish live in water (T1)",
+        "Lungfish can breathe air (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 15,
+      "sentence": "Electric vehicles emit carbon dioxide.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Electric cars are vehicles (T2)",
+        "Vehicles produce emissions (traditional)",
+        "Electric cars don't produce exhaust (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 16,
+      "sentence": "Cassowaries soar at high altitudes.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Cassowaries are birds",
+        "Birds can fly (T1)",
+        "Cassowaries cannot fly (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 17,
+      "sentence": "Mudskippers breathe only through gills.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Mudskippers are fish (T2)",
+        "Fish breathe through gills (T1)",
+        "Mudskippers can move on land (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 18,
+      "sentence": "Sailboats consume diesel.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Sailboats are vehicles (T2)",
+        "Vehicles need energy (T1)",
+        "Sailboats use wind (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    },
+    {
+      "task_id": 8,
+      "sample_id": 19,
+      "sentence": "Naked mole rats seek warm environments.",
+      "label": "ambiguous",
+      "conflicts_with": [
+        "Naked mole rats are mammals (T2)",
+        "Mammals are warm-blooded (T1)",
+        "Naked mole rats are cold-blooded (T4)"
+      ],
+      "conflict_type": "delayed_conflict",
+      "entities": [],
+      "relations": [],
+      "reasoning_chain": [],
+      "difficulty": "hard",
+      "task_name": "T8: Delayed Contradictions"
+    }
+  ]
+}

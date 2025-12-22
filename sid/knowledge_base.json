@@ -1,0 +1,414 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "description": "Comprehensive knowledge base for SID conflict detection",
+    "last_updated": "2024-12-21",
+    "sources": ["ConceptNet", "Common sense knowledge", "Scientific facts"]
+  },
+  "concepts": {
+    "penguin": [
+      {"start": "/c/en/penguin", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/penguin", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/penguin", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/penguin", "rel": "/r/CapableOf", "end": "/c/en/dive", "weight": 4.5},
+      {"start": "/c/en/penguin", "rel": "/r/AtLocation", "end": "/c/en/antarctica", "weight": 4.0},
+      {"start": "/c/en/penguin", "rel": "/r/HasProperty", "end": "/c/en/flightless", "weight": 5.0},
+      {"start": "/c/en/penguin", "rel": "/r/HasA", "end": "/c/en/feather", "weight": 4.0},
+      {"start": "/c/en/penguin", "rel": "/r/HasA", "end": "/c/en/beak", "weight": 4.0}
+    ],
+    "ostrich": [
+      {"start": "/c/en/ostrich", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/ostrich", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/ostrich", "rel": "/r/CapableOf", "end": "/c/en/run", "weight": 5.0},
+      {"start": "/c/en/ostrich", "rel": "/r/HasProperty", "end": "/c/en/flightless", "weight": 5.0},
+      {"start": "/c/en/ostrich", "rel": "/r/HasProperty", "end": "/c/en/fast", "weight": 4.0}
+    ],
+    "emu": [
+      {"start": "/c/en/emu", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/emu", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/emu", "rel": "/r/CapableOf", "end": "/c/en/run", "weight": 4.5},
+      {"start": "/c/en/emu", "rel": "/r/HasProperty", "end": "/c/en/flightless", "weight": 5.0}
+    ],
+    "kiwi": [
+      {"start": "/c/en/kiwi", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/kiwi", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/kiwi", "rel": "/r/HasProperty", "end": "/c/en/flightless", "weight": 5.0},
+      {"start": "/c/en/kiwi", "rel": "/r/AtLocation", "end": "/c/en/new_zealand", "weight": 4.0}
+    ],
+    "bird": [
+      {"start": "/c/en/bird", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/bird", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 4.5},
+      {"start": "/c/en/bird", "rel": "/r/HasA", "end": "/c/en/wing", "weight": 5.0},
+      {"start": "/c/en/bird", "rel": "/r/HasA", "end": "/c/en/feather", "weight": 5.0},
+      {"start": "/c/en/bird", "rel": "/r/HasA", "end": "/c/en/beak", "weight": 5.0},
+      {"start": "/c/en/bird", "rel": "/r/CapableOf", "end": "/c/en/lay_eggs", "weight": 5.0}
+    ],
+    "eagle": [
+      {"start": "/c/en/eagle", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/eagle", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/eagle", "rel": "/r/CapableOf", "end": "/c/en/hunt", "weight": 4.5},
+      {"start": "/c/en/eagle", "rel": "/r/HasProperty", "end": "/c/en/powerful", "weight": 4.0}
+    ],
+    "sparrow": [
+      {"start": "/c/en/sparrow", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/sparrow", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/sparrow", "rel": "/r/HasProperty", "end": "/c/en/small", "weight": 4.0}
+    ],
+    "dog": [
+      {"start": "/c/en/dog", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/IsA", "end": "/c/en/pet", "weight": 4.5},
+      {"start": "/c/en/dog", "rel": "/r/CapableOf", "end": "/c/en/bark", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/CapableOf", "end": "/c/en/run", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 4.0},
+      {"start": "/c/en/dog", "rel": "/r/CapableOf", "end": "/c/en/bite", "weight": 4.0},
+      {"start": "/c/en/dog", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/NotCapableOf", "end": "/c/en/meow", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/HasA", "end": "/c/en/tail", "weight": 5.0},
+      {"start": "/c/en/dog", "rel": "/r/HasA", "end": "/c/en/fur", "weight": 5.0}
+    ],
+    "cat": [
+      {"start": "/c/en/cat", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/IsA", "end": "/c/en/pet", "weight": 4.5},
+      {"start": "/c/en/cat", "rel": "/r/CapableOf", "end": "/c/en/meow", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/CapableOf", "end": "/c/en/climb", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/CapableOf", "end": "/c/en/hunt", "weight": 4.0},
+      {"start": "/c/en/cat", "rel": "/r/CapableOf", "end": "/c/en/purr", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/NotCapableOf", "end": "/c/en/bark", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/HasA", "end": "/c/en/tail", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/HasA", "end": "/c/en/fur", "weight": 5.0},
+      {"start": "/c/en/cat", "rel": "/r/HasA", "end": "/c/en/claw", "weight": 5.0}
+    ],
+    "fish": [
+      {"start": "/c/en/fish", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/NotCapableOf", "end": "/c/en/breathe_air", "weight": 4.5},
+      {"start": "/c/en/fish", "rel": "/r/AtLocation", "end": "/c/en/water", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/HasA", "end": "/c/en/fin", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/HasA", "end": "/c/en/gill", "weight": 5.0},
+      {"start": "/c/en/fish", "rel": "/r/HasA", "end": "/c/en/scale", "weight": 4.5}
+    ],
+    "shark": [
+      {"start": "/c/en/shark", "rel": "/r/IsA", "end": "/c/en/fish", "weight": 5.0},
+      {"start": "/c/en/shark", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/shark", "rel": "/r/CapableOf", "end": "/c/en/hunt", "weight": 5.0},
+      {"start": "/c/en/shark", "rel": "/r/CapableOf", "end": "/c/en/bite", "weight": 5.0},
+      {"start": "/c/en/shark", "rel": "/r/HasProperty", "end": "/c/en/dangerous", "weight": 4.5},
+      {"start": "/c/en/shark", "rel": "/r/AtLocation", "end": "/c/en/ocean", "weight": 5.0}
+    ],
+    "whale": [
+      {"start": "/c/en/whale", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/CapableOf", "end": "/c/en/breathe_air", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/AtLocation", "end": "/c/en/ocean", "weight": 5.0},
+      {"start": "/c/en/whale", "rel": "/r/HasProperty", "end": "/c/en/large", "weight": 5.0}
+    ],
+    "dolphin": [
+      {"start": "/c/en/dolphin", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/dolphin", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/dolphin", "rel": "/r/CapableOf", "end": "/c/en/jump", "weight": 4.5},
+      {"start": "/c/en/dolphin", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/dolphin", "rel": "/r/HasProperty", "end": "/c/en/intelligent", "weight": 4.5},
+      {"start": "/c/en/dolphin", "rel": "/r/AtLocation", "end": "/c/en/ocean", "weight": 5.0}
+    ],
+    "bat": [
+      {"start": "/c/en/bat", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/bat", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/bat", "rel": "/r/HasA", "end": "/c/en/wing", "weight": 5.0},
+      {"start": "/c/en/bat", "rel": "/r/CapableOf", "end": "/c/en/echolocate", "weight": 4.5}
+    ],
+    "snake": [
+      {"start": "/c/en/snake", "rel": "/r/IsA", "end": "/c/en/reptile", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/CapableOf", "end": "/c/en/slither", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/CapableOf", "end": "/c/en/bite", "weight": 4.5},
+      {"start": "/c/en/snake", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/NotCapableOf", "end": "/c/en/run", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/NotHasA", "end": "/c/en/leg", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/HasProperty", "end": "/c/en/legless", "weight": 5.0}
+    ],
+    "spider": [
+      {"start": "/c/en/spider", "rel": "/r/IsA", "end": "/c/en/arachnid", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/CapableOf", "end": "/c/en/spin_web", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/CapableOf", "end": "/c/en/climb", "weight": 4.5},
+      {"start": "/c/en/spider", "rel": "/r/HasA", "end": "/c/en/leg", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/HasProperty", "end": "/c/en/eight_legged", "weight": 5.0}
+    ],
+    "elephant": [
+      {"start": "/c/en/elephant", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/HasA", "end": "/c/en/trunk", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/HasA", "end": "/c/en/tusk", "weight": 4.5},
+      {"start": "/c/en/elephant", "rel": "/r/HasProperty", "end": "/c/en/large", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/HasProperty", "end": "/c/en/heavy", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/CapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/elephant", "rel": "/r/NotCapableOf", "end": "/c/en/jump", "weight": 5.0}
+    ],
+    "lion": [
+      {"start": "/c/en/lion", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/lion", "rel": "/r/IsA", "end": "/c/en/carnivore", "weight": 5.0},
+      {"start": "/c/en/lion", "rel": "/r/CapableOf", "end": "/c/en/roar", "weight": 5.0},
+      {"start": "/c/en/lion", "rel": "/r/CapableOf", "end": "/c/en/hunt", "weight": 5.0},
+      {"start": "/c/en/lion", "rel": "/r/CapableOf", "end": "/c/en/run", "weight": 5.0},
+      {"start": "/c/en/lion", "rel": "/r/HasProperty", "end": "/c/en/dangerous", "weight": 4.5},
+      {"start": "/c/en/lion", "rel": "/r/AtLocation", "end": "/c/en/africa", "weight": 4.0}
+    ],
+    "tiger": [
+      {"start": "/c/en/tiger", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/tiger", "rel": "/r/IsA", "end": "/c/en/carnivore", "weight": 5.0},
+      {"start": "/c/en/tiger", "rel": "/r/CapableOf", "end": "/c/en/hunt", "weight": 5.0},
+      {"start": "/c/en/tiger", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 4.0},
+      {"start": "/c/en/tiger", "rel": "/r/HasProperty", "end": "/c/en/striped", "weight": 5.0},
+      {"start": "/c/en/tiger", "rel": "/r/HasProperty", "end": "/c/en/dangerous", "weight": 4.5}
+    ],
+    "horse": [
+      {"start": "/c/en/horse", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/horse", "rel": "/r/CapableOf", "end": "/c/en/run", "weight": 5.0},
+      {"start": "/c/en/horse", "rel": "/r/CapableOf", "end": "/c/en/gallop", "weight": 5.0},
+      {"start": "/c/en/horse", "rel": "/r/CapableOf", "end": "/c/en/jump", "weight": 4.5},
+      {"start": "/c/en/horse", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/horse", "rel": "/r/HasA", "end": "/c/en/hoof", "weight": 5.0},
+      {"start": "/c/en/horse", "rel": "/r/HasA", "end": "/c/en/mane", "weight": 5.0}
+    ],
+    "cow": [
+      {"start": "/c/en/cow", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/cow", "rel": "/r/CapableOf", "end": "/c/en/moo", "weight": 5.0},
+      {"start": "/c/en/cow", "rel": "/r/CapableOf", "end": "/c/en/produce_milk", "weight": 5.0},
+      {"start": "/c/en/cow", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/cow", "rel": "/r/HasProperty", "end": "/c/en/herbivore", "weight": 5.0}
+    ],
+    "pig": [
+      {"start": "/c/en/pig", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/pig", "rel": "/r/CapableOf", "end": "/c/en/oink", "weight": 5.0},
+      {"start": "/c/en/pig", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/pig", "rel": "/r/HasProperty", "end": "/c/en/intelligent", "weight": 4.0}
+    ],
+    "chicken": [
+      {"start": "/c/en/chicken", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/chicken", "rel": "/r/CapableOf", "end": "/c/en/lay_eggs", "weight": 5.0},
+      {"start": "/c/en/chicken", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 4.0},
+      {"start": "/c/en/chicken", "rel": "/r/CapableOf", "end": "/c/en/cluck", "weight": 5.0}
+    ],
+    "duck": [
+      {"start": "/c/en/duck", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+      {"start": "/c/en/duck", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 4.0},
+      {"start": "/c/en/duck", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/duck", "rel": "/r/CapableOf", "end": "/c/en/quack", "weight": 5.0}
+    ],
+    "frog": [
+      {"start": "/c/en/frog", "rel": "/r/IsA", "end": "/c/en/amphibian", "weight": 5.0},
+      {"start": "/c/en/frog", "rel": "/r/CapableOf", "end": "/c/en/jump", "weight": 5.0},
+      {"start": "/c/en/frog", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/frog", "rel": "/r/CapableOf", "end": "/c/en/croak", "weight": 5.0},
+      {"start": "/c/en/frog", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "turtle": [
+      {"start": "/c/en/turtle", "rel": "/r/IsA", "end": "/c/en/reptile", "weight": 5.0},
+      {"start": "/c/en/turtle", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+      {"start": "/c/en/turtle", "rel": "/r/HasA", "end": "/c/en/shell", "weight": 5.0},
+      {"start": "/c/en/turtle", "rel": "/r/HasProperty", "end": "/c/en/slow", "weight": 4.5},
+      {"start": "/c/en/turtle", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "rabbit": [
+      {"start": "/c/en/rabbit", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/rabbit", "rel": "/r/CapableOf", "end": "/c/en/hop", "weight": 5.0},
+      {"start": "/c/en/rabbit", "rel": "/r/CapableOf", "end": "/c/en/jump", "weight": 5.0},
+      {"start": "/c/en/rabbit", "rel": "/r/HasA", "end": "/c/en/ear", "weight": 5.0},
+      {"start": "/c/en/rabbit", "rel": "/r/HasProperty", "end": "/c/en/fast", "weight": 4.0},
+      {"start": "/c/en/rabbit", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "bear": [
+      {"start": "/c/en/bear", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/bear", "rel": "/r/CapableOf", "end": "/c/en/hibernate", "weight": 4.5},
+      {"start": "/c/en/bear", "rel": "/r/CapableOf", "end": "/c/en/climb", "weight": 4.0},
+      {"start": "/c/en/bear", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 4.0},
+      {"start": "/c/en/bear", "rel": "/r/HasProperty", "end": "/c/en/dangerous", "weight": 4.5},
+      {"start": "/c/en/bear", "rel": "/r/HasProperty", "end": "/c/en/large", "weight": 4.5},
+      {"start": "/c/en/bear", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "monkey": [
+      {"start": "/c/en/monkey", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/monkey", "rel": "/r/IsA", "end": "/c/en/primate", "weight": 5.0},
+      {"start": "/c/en/monkey", "rel": "/r/CapableOf", "end": "/c/en/climb", "weight": 5.0},
+      {"start": "/c/en/monkey", "rel": "/r/CapableOf", "end": "/c/en/swing", "weight": 5.0},
+      {"start": "/c/en/monkey", "rel": "/r/HasProperty", "end": "/c/en/intelligent", "weight": 4.5},
+      {"start": "/c/en/monkey", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "human": [
+      {"start": "/c/en/human", "rel": "/r/IsA", "end": "/c/en/mammal", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/IsA", "end": "/c/en/primate", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/think", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/speak", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 4.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/read", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/CapableOf", "end": "/c/en/write", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/NotCapableOf", "end": "/c/en/breathe_underwater", "weight": 5.0},
+      {"start": "/c/en/human", "rel": "/r/HasProperty", "end": "/c/en/intelligent", "weight": 5.0}
+    ],
+    "baby": [
+      {"start": "/c/en/baby", "rel": "/r/IsA", "end": "/c/en/human", "weight": 5.0},
+      {"start": "/c/en/baby", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 4.0},
+      {"start": "/c/en/baby", "rel": "/r/NotCapableOf", "end": "/c/en/speak", "weight": 4.0},
+      {"start": "/c/en/baby", "rel": "/r/CapableOf", "end": "/c/en/cry", "weight": 5.0},
+      {"start": "/c/en/baby", "rel": "/r/HasProperty", "end": "/c/en/small", "weight": 5.0}
+    ],
+    "water": [
+      {"start": "/c/en/water", "rel": "/r/IsA", "end": "/c/en/liquid", "weight": 5.0},
+      {"start": "/c/en/water", "rel": "/r/UsedFor", "end": "/c/en/drinking", "weight": 5.0},
+      {"start": "/c/en/water", "rel": "/r/HasProperty", "end": "/c/en/wet", "weight": 5.0},
+      {"start": "/c/en/water", "rel": "/r/HasProperty", "end": "/c/en/transparent", "weight": 4.5},
+      {"start": "/c/en/water", "rel": "/r/NotHasProperty", "end": "/c/en/flammable", "weight": 5.0}
+    ],
+    "fire": [
+      {"start": "/c/en/fire", "rel": "/r/IsA", "end": "/c/en/phenomenon", "weight": 4.0},
+      {"start": "/c/en/fire", "rel": "/r/HasProperty", "end": "/c/en/hot", "weight": 5.0},
+      {"start": "/c/en/fire", "rel": "/r/HasProperty", "end": "/c/en/dangerous", "weight": 4.5},
+      {"start": "/c/en/fire", "rel": "/r/Causes", "end": "/c/en/burn", "weight": 5.0},
+      {"start": "/c/en/fire", "rel": "/r/NotHasProperty", "end": "/c/en/cold", "weight": 5.0},
+      {"start": "/c/en/fire", "rel": "/r/NotHasProperty", "end": "/c/en/wet", "weight": 5.0}
+    ],
+    "ice": [
+      {"start": "/c/en/ice", "rel": "/r/IsA", "end": "/c/en/solid", "weight": 5.0},
+      {"start": "/c/en/ice", "rel": "/r/HasProperty", "end": "/c/en/cold", "weight": 5.0},
+      {"start": "/c/en/ice", "rel": "/r/HasProperty", "end": "/c/en/frozen", "weight": 5.0},
+      {"start": "/c/en/ice", "rel": "/r/MadeOf", "end": "/c/en/water", "weight": 5.0},
+      {"start": "/c/en/ice", "rel": "/r/NotHasProperty", "end": "/c/en/hot", "weight": 5.0}
+    ],
+    "sun": [
+      {"start": "/c/en/sun", "rel": "/r/IsA", "end": "/c/en/star", "weight": 5.0},
+      {"start": "/c/en/sun", "rel": "/r/HasProperty", "end": "/c/en/hot", "weight": 5.0},
+      {"start": "/c/en/sun", "rel": "/r/HasProperty", "end": "/c/en/bright", "weight": 5.0},
+      {"start": "/c/en/sun", "rel": "/r/Causes", "end": "/c/en/light", "weight": 5.0},
+      {"start": "/c/en/sun", "rel": "/r/Causes", "end": "/c/en/heat", "weight": 5.0}
+    ],
+    "moon": [
+      {"start": "/c/en/moon", "rel": "/r/IsA", "end": "/c/en/satellite", "weight": 5.0},
+      {"start": "/c/en/moon", "rel": "/r/AtLocation", "end": "/c/en/sky", "weight": 5.0},
+      {"start": "/c/en/moon", "rel": "/r/NotHasProperty", "end": "/c/en/hot", "weight": 4.0}
+    ],
+    "earth": [
+      {"start": "/c/en/earth", "rel": "/r/IsA", "end": "/c/en/planet", "weight": 5.0},
+      {"start": "/c/en/earth", "rel": "/r/HasA", "end": "/c/en/water", "weight": 5.0},
+      {"start": "/c/en/earth", "rel": "/r/HasA", "end": "/c/en/atmosphere", "weight": 5.0}
+    ],
+    "car": [
+      {"start": "/c/en/car", "rel": "/r/IsA", "end": "/c/en/vehicle", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/UsedFor", "end": "/c/en/transportation", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/HasA", "end": "/c/en/wheel", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/HasA", "end": "/c/en/engine", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/CapableOf", "end": "/c/en/drive", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/car", "rel": "/r/NotCapableOf", "end": "/c/en/swim", "weight": 5.0}
+    ],
+    "airplane": [
+      {"start": "/c/en/airplane", "rel": "/r/IsA", "end": "/c/en/vehicle", "weight": 5.0},
+      {"start": "/c/en/airplane", "rel": "/r/CapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/airplane", "rel": "/r/HasA", "end": "/c/en/wing", "weight": 5.0},
+      {"start": "/c/en/airplane", "rel": "/r/HasA", "end": "/c/en/engine", "weight": 5.0},
+      {"start": "/c/en/airplane", "rel": "/r/NotCapableOf", "end": "/c/en/swim", "weight": 5.0}
+    ],
+    "boat": [
+      {"start": "/c/en/boat", "rel": "/r/IsA", "end": "/c/en/vehicle", "weight": 5.0},
+      {"start": "/c/en/boat", "rel": "/r/CapableOf", "end": "/c/en/float", "weight": 5.0},
+      {"start": "/c/en/boat", "rel": "/r/AtLocation", "end": "/c/en/water", "weight": 5.0},
+      {"start": "/c/en/boat", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0}
+    ],
+    "bicycle": [
+      {"start": "/c/en/bicycle", "rel": "/r/IsA", "end": "/c/en/vehicle", "weight": 5.0},
+      {"start": "/c/en/bicycle", "rel": "/r/HasA", "end": "/c/en/wheel", "weight": 5.0},
+      {"start": "/c/en/bicycle", "rel": "/r/HasA", "end": "/c/en/pedal", "weight": 5.0},
+      {"start": "/c/en/bicycle", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+      {"start": "/c/en/bicycle", "rel": "/r/NotHasA", "end": "/c/en/engine", "weight": 4.5}
+    ],
+    "tree": [
+      {"start": "/c/en/tree", "rel": "/r/IsA", "end": "/c/en/plant", "weight": 5.0},
+      {"start": "/c/en/tree", "rel": "/r/HasA", "end": "/c/en/leaf", "weight": 5.0},
+      {"start": "/c/en/tree", "rel": "/r/HasA", "end": "/c/en/root", "weight": 5.0},
+      {"start": "/c/en/tree", "rel": "/r/HasA", "end": "/c/en/branch", "weight": 5.0},
+      {"start": "/c/en/tree", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/tree", "rel": "/r/NotCapableOf", "end": "/c/en/move", "weight": 5.0}
+    ],
+    "flower": [
+      {"start": "/c/en/flower", "rel": "/r/IsA", "end": "/c/en/plant", "weight": 5.0},
+      {"start": "/c/en/flower", "rel": "/r/HasA", "end": "/c/en/petal", "weight": 5.0},
+      {"start": "/c/en/flower", "rel": "/r/HasProperty", "end": "/c/en/colorful", "weight": 4.5},
+      {"start": "/c/en/flower", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0}
+    ],
+    "rock": [
+      {"start": "/c/en/rock", "rel": "/r/IsA", "end": "/c/en/object", "weight": 5.0},
+      {"start": "/c/en/rock", "rel": "/r/HasProperty", "end": "/c/en/hard", "weight": 5.0},
+      {"start": "/c/en/rock", "rel": "/r/HasProperty", "end": "/c/en/solid", "weight": 5.0},
+      {"start": "/c/en/rock", "rel": "/r/NotCapableOf", "end": "/c/en/move", "weight": 5.0},
+      {"start": "/c/en/rock", "rel": "/r/NotCapableOf", "end": "/c/en/grow", "weight": 5.0}
+    ],
+    "glass": [
+      {"start": "/c/en/glass", "rel": "/r/IsA", "end": "/c/en/material", "weight": 5.0},
+      {"start": "/c/en/glass", "rel": "/r/HasProperty", "end": "/c/en/transparent", "weight": 5.0},
+      {"start": "/c/en/glass", "rel": "/r/HasProperty", "end": "/c/en/fragile", "weight": 5.0},
+      {"start": "/c/en/glass", "rel": "/r/HasProperty", "end": "/c/en/breakable", "weight": 5.0}
+    ],
+    "metal": [
+      {"start": "/c/en/metal", "rel": "/r/IsA", "end": "/c/en/material", "weight": 5.0},
+      {"start": "/c/en/metal", "rel": "/r/HasProperty", "end": "/c/en/hard", "weight": 5.0},
+      {"start": "/c/en/metal", "rel": "/r/HasProperty", "end": "/c/en/conductive", "weight": 4.5}
+    ],
+    "wood": [
+      {"start": "/c/en/wood", "rel": "/r/IsA", "end": "/c/en/material", "weight": 5.0},
+      {"start": "/c/en/wood", "rel": "/r/MadeOf", "end": "/c/en/tree", "weight": 5.0},
+      {"start": "/c/en/wood", "rel": "/r/HasProperty", "end": "/c/en/flammable", "weight": 5.0}
+    ],
+    "dead": [
+      {"start": "/c/en/dead", "rel": "/r/Antonym", "end": "/c/en/alive", "weight": 5.0},
+      {"start": "/c/en/dead", "rel": "/r/NotCapableOf", "end": "/c/en/move", "weight": 5.0},
+      {"start": "/c/en/dead", "rel": "/r/NotCapableOf", "end": "/c/en/breathe", "weight": 5.0}
+    ],
+    "alive": [
+      {"start": "/c/en/alive", "rel": "/r/Antonym", "end": "/c/en/dead", "weight": 5.0},
+      {"start": "/c/en/alive", "rel": "/r/CapableOf", "end": "/c/en/breathe", "weight": 5.0}
+    ],
+    "blind": [
+      {"start": "/c/en/blind", "rel": "/r/NotCapableOf", "end": "/c/en/see", "weight": 5.0}
+    ],
+    "deaf": [
+      {"start": "/c/en/deaf", "rel": "/r/NotCapableOf", "end": "/c/en/hear", "weight": 5.0}
+    ],
+    "vegetarian": [
+      {"start": "/c/en/vegetarian", "rel": "/r/NotCapableOf", "end": "/c/en/eat_meat", "weight": 5.0}
+    ],
+    "carnivore": [
+      {"start": "/c/en/carnivore", "rel": "/r/CapableOf", "end": "/c/en/eat_meat", "weight": 5.0},
+      {"start": "/c/en/carnivore", "rel": "/r/NotCapableOf", "end": "/c/en/eat_plants", "weight": 3.0}
+    ],
+    "herbivore": [
+      {"start": "/c/en/herbivore", "rel": "/r/CapableOf", "end": "/c/en/eat_plants", "weight": 5.0},
+      {"start": "/c/en/herbivore", "rel": "/r/NotCapableOf", "end": "/c/en/eat_meat", "weight": 5.0}
+    ],
+    "snake": [
+      {"start": "/c/en/snake", "rel": "/r/IsA", "end": "/c/en/reptile", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/NotHasA", "end": "/c/en/leg", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/CapableOf", "end": "/c/en/slither", "weight": 5.0},
+      {"start": "/c/en/snake", "rel": "/r/CapableOf", "end": "/c/en/bite", "weight": 4.5},
+      {"start": "/c/en/snake", "rel": "/r/HasA", "end": "/c/en/scale", "weight": 4.5}
+    ],
+    "spider": [
+      {"start": "/c/en/spider", "rel": "/r/IsA", "end": "/c/en/arachnid", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/HasA", "end": "/c/en/leg", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/HasProperty", "end": "/c/en/eight_legs", "weight": 5.0},
+      {"start": "/c/en/spider", "rel": "/r/CapableOf", "end": "/c/en/spin_web", "weight": 5.0}
+    ],
+    "worm": [
+      {"start": "/c/en/worm", "rel": "/r/IsA", "end": "/c/en/animal", "weight": 5.0},
+      {"start": "/c/en/worm", "rel": "/r/NotHasA", "end": "/c/en/leg", "weight": 5.0},
+      {"start": "/c/en/worm", "rel": "/r/NotCapableOf", "end": "/c/en/walk", "weight": 5.0}
+    ]
+  }
+}

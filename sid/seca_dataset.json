@@ -1,0 +1,936 @@
+{
+  "name": "SeCA Standard Dataset",
+  "version": "1.0",
+  "created_at": "2025-12-21T15:56:37.112495",
+  "statistics": {
+    "name": "SeCA Standard Dataset",
+    "version": "1.0",
+    "total_tasks": 10,
+    "total_samples": 49,
+    "total_conflicts": 7,
+    "conflict_rate": 0.14285714285714285,
+    "conflict_types": {
+      "inheritance": 1,
+      "capability": 3,
+      "property": 2,
+      "negation": 1
+    },
+    "domains": {
+      "animals": 5,
+      "science": 1,
+      "common_sense": 2,
+      "objects": 1,
+      "general": 1
+    },
+    "created_at": "2025-12-21T15:56:37.112495"
+  },
+  "tasks": [
+    {
+      "task_id": 0,
+      "name": "General Bird Knowledge",
+      "description": "Establish baseline bird knowledge",
+      "domain": "animals",
+      "difficulty": "easy",
+      "expected_conflicts": 0,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Birds are animals that can fly.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "bird",
+            "animal"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Birds have wings and feathers.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "bird",
+            "wing",
+            "feather"
+          ],
+          "relations": [
+            "HasA"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Sparrows are small birds that can fly.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "sparrow",
+            "bird"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Eagles are large birds that can fly very high.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "eagle",
+            "bird"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Most birds build nests to lay their eggs.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "bird",
+            "nest",
+            "egg"
+          ],
+          "relations": [
+            "CapableOf",
+            "UsedFor"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 1,
+      "name": "Penguin Knowledge",
+      "description": "Penguin facts with flight conflict",
+      "domain": "animals",
+      "difficulty": "medium",
+      "expected_conflicts": 1,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Penguins are birds.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "penguin",
+            "bird"
+          ],
+          "relations": [
+            "IsA"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Penguins can fly.",
+          "sample_id": 1,
+          "has_conflict": true,
+          "conflict_type": "inheritance",
+          "conflict_with": "Penguins cannot fly (they are flightless)",
+          "entities": [
+            "penguin",
+            "fly"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Penguins are excellent swimmers.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "penguin",
+            "swim"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Penguins live in Antarctica.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "penguin",
+            "Antarctica"
+          ],
+          "relations": [
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Penguins eat fish and krill.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "penguin",
+            "fish",
+            "krill"
+          ],
+          "relations": [
+            "UsedFor"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 2,
+      "name": "Flightless Bird Knowledge",
+      "description": "Other flightless birds",
+      "domain": "animals",
+      "difficulty": "medium",
+      "expected_conflicts": 0,
+      "sample_count": 4,
+      "samples": [
+        {
+          "text": "Ostriches are the largest birds in the world.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "ostrich",
+            "bird"
+          ],
+          "relations": [
+            "IsA",
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Ostriches cannot fly but can run very fast.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "ostrich",
+            "fly",
+            "run"
+          ],
+          "relations": [
+            "NotCapableOf",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Emus are large flightless birds from Australia.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "emu",
+            "bird",
+            "Australia"
+          ],
+          "relations": [
+            "IsA",
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Kiwis are small flightless birds native to New Zealand.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "kiwi",
+            "bird",
+            "New Zealand"
+          ],
+          "relations": [
+            "IsA",
+            "AtLocation"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 3,
+      "name": "Aquatic Animal Knowledge",
+      "description": "Facts about fish and aquatic animals",
+      "domain": "animals",
+      "difficulty": "easy",
+      "expected_conflicts": 1,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Fish can swim in water.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "fish",
+            "swim",
+            "water"
+          ],
+          "relations": [
+            "CapableOf",
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Fish breathe through gills.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "fish",
+            "gill"
+          ],
+          "relations": [
+            "HasA",
+            "UsedFor"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Sharks are fish that can be dangerous.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "shark",
+            "fish"
+          ],
+          "relations": [
+            "IsA",
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Fish can walk on land.",
+          "sample_id": 3,
+          "has_conflict": true,
+          "conflict_type": "capability",
+          "conflict_with": "Fish cannot walk on land",
+          "entities": [
+            "fish",
+            "walk",
+            "land"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Whales are mammals, not fish.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "whale",
+            "mammal",
+            "fish"
+          ],
+          "relations": [
+            "IsA",
+            "DistinctFrom"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 4,
+      "name": "Mammal Knowledge",
+      "description": "Facts about mammals",
+      "domain": "animals",
+      "difficulty": "easy",
+      "expected_conflicts": 0,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Dogs are mammals that can bark.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "dog",
+            "mammal",
+            "bark"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Cats are mammals that can meow.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "cat",
+            "mammal",
+            "meow"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Humans are mammals that can think and reason.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "human",
+            "mammal",
+            "think"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Bats are the only mammals that can fly.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "bat",
+            "mammal",
+            "fly"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Elephants are the largest land mammals.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "elephant",
+            "mammal"
+          ],
+          "relations": [
+            "IsA",
+            "HasProperty"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 5,
+      "name": "Element Properties",
+      "description": "Properties of natural elements",
+      "domain": "science",
+      "difficulty": "easy",
+      "expected_conflicts": 1,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Fire is hot and produces light.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "fire",
+            "hot",
+            "light"
+          ],
+          "relations": [
+            "HasProperty",
+            "Causes"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Water is wet and can be liquid, solid, or gas.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "water",
+            "wet",
+            "liquid"
+          ],
+          "relations": [
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Ice is frozen water and is cold.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "ice",
+            "water",
+            "cold"
+          ],
+          "relations": [
+            "MadeOf",
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Fire is cold.",
+          "sample_id": 3,
+          "has_conflict": true,
+          "conflict_type": "property",
+          "conflict_with": "Fire is hot, not cold",
+          "entities": [
+            "fire",
+            "cold"
+          ],
+          "relations": [
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "The sun is extremely hot.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "sun",
+            "hot"
+          ],
+          "relations": [
+            "HasProperty"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 6,
+      "name": "Human Capabilities",
+      "description": "What humans can and cannot do",
+      "domain": "common_sense",
+      "difficulty": "medium",
+      "expected_conflicts": 2,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Humans can walk on two legs.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "human",
+            "walk"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Humans can breathe underwater without equipment.",
+          "sample_id": 1,
+          "has_conflict": true,
+          "conflict_type": "capability",
+          "conflict_with": "Humans cannot breathe underwater",
+          "entities": [
+            "human",
+            "breathe",
+            "underwater"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Humans can fly without any assistance.",
+          "sample_id": 2,
+          "has_conflict": true,
+          "conflict_type": "capability",
+          "conflict_with": "Humans cannot fly without machines",
+          "entities": [
+            "human",
+            "fly"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Humans can communicate using language.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "human",
+            "communicate",
+            "language"
+          ],
+          "relations": [
+            "CapableOf",
+            "UsedFor"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Humans need food and water to survive.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "human",
+            "food",
+            "water"
+          ],
+          "relations": [
+            "HasPrerequisite"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 7,
+      "name": "Vehicle Knowledge",
+      "description": "Facts about vehicles",
+      "domain": "objects",
+      "difficulty": "easy",
+      "expected_conflicts": 0,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Cars have four wheels and can drive on roads.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "car",
+            "wheel",
+            "road"
+          ],
+          "relations": [
+            "HasA",
+            "CapableOf",
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Airplanes can fly through the sky.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "airplane",
+            "fly",
+            "sky"
+          ],
+          "relations": [
+            "CapableOf",
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Boats can travel on water.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "boat",
+            "water"
+          ],
+          "relations": [
+            "CapableOf",
+            "AtLocation"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Bicycles have two wheels and are powered by humans.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "bicycle",
+            "wheel",
+            "human"
+          ],
+          "relations": [
+            "HasA",
+            "UsedFor"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Submarines can travel underwater.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "submarine",
+            "underwater"
+          ],
+          "relations": [
+            "CapableOf",
+            "AtLocation"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 8,
+      "name": "Negation Knowledge",
+      "description": "Testing negation handling",
+      "domain": "common_sense",
+      "difficulty": "hard",
+      "expected_conflicts": 1,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "Snakes do not have legs.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "snake",
+            "leg"
+          ],
+          "relations": [
+            "NotHasA"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Snakes have legs.",
+          "sample_id": 1,
+          "has_conflict": true,
+          "conflict_type": "negation",
+          "conflict_with": "Snakes do not have legs",
+          "entities": [
+            "snake",
+            "leg"
+          ],
+          "relations": [
+            "HasA"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Rocks are not alive.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "rock",
+            "alive"
+          ],
+          "relations": [
+            "NotHasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Plants can produce their own food through photosynthesis.",
+          "sample_id": 3,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "plant",
+            "food",
+            "photosynthesis"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Animals cannot photosynthesize.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "animal",
+            "photosynthesize"
+          ],
+          "relations": [
+            "NotCapableOf"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    },
+    {
+      "task_id": 9,
+      "name": "Mixed Knowledge Review",
+      "description": "Mixed facts to test overall consistency",
+      "domain": "general",
+      "difficulty": "hard",
+      "expected_conflicts": 1,
+      "sample_count": 5,
+      "samples": [
+        {
+          "text": "All mammals give birth to live young.",
+          "sample_id": 0,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "mammal",
+            "birth"
+          ],
+          "relations": [
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "The platypus is a mammal that lays eggs.",
+          "sample_id": 1,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "platypus",
+            "mammal",
+            "egg"
+          ],
+          "relations": [
+            "IsA",
+            "CapableOf"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Water boils at 100 degrees Celsius at sea level.",
+          "sample_id": 2,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "water",
+            "boil",
+            "temperature"
+          ],
+          "relations": [
+            "HasProperty"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "The moon produces its own light.",
+          "sample_id": 3,
+          "has_conflict": true,
+          "conflict_type": "property",
+          "conflict_with": "The moon reflects sunlight, it doesn't produce light",
+          "entities": [
+            "moon",
+            "light"
+          ],
+          "relations": [
+            "Causes"
+          ],
+          "metadata": {}
+        },
+        {
+          "text": "Spiders have eight legs.",
+          "sample_id": 4,
+          "has_conflict": false,
+          "conflict_type": "none",
+          "conflict_with": null,
+          "entities": [
+            "spider",
+            "leg"
+          ],
+          "relations": [
+            "HasA"
+          ],
+          "metadata": {}
+        }
+      ],
+      "metadata": {}
+    }
+  ]
+}
