@@ -83,16 +83,22 @@ class SGCLTrainer:
             device_map="auto"
         )
         
-        # Apply LoRA
+        # Apply LoRA with model-specific target modules
+        # GPT-2 uses "c_attn", Phi-3/Llama use "q_proj", "v_proj"
+        if "gpt2" in config.model_name.lower():
+            target_modules = ["c_attn"]
+        else:
+            target_modules = ["q_proj", "v_proj"]
+            
         lora_config = LoraConfig(
             r=config.lora_r,
             lora_alpha=config.lora_alpha,
-            target_modules=["q_proj", "v_proj"],
+            target_modules=target_modules,
             lora_dropout=config.lora_dropout,
             task_type="CAUSAL_LM"
         )
         self.model = get_peft_model(self.model, lora_config)
-        print(f"LoRA applied: r={config.lora_r}, alpha={config.lora_alpha}")
+        print(f"LoRA applied: r={config.lora_r}, alpha={config.lora_alpha}, targets={target_modules}")
         
         # Initialize optimizer
         self.optimizer = AdamW(
@@ -140,10 +146,10 @@ class SGCLTrainer:
         print("="*70 + "\n")
         
         for task_id, (task_data, task_name) in enumerate(zip(tasks, task_names)):
-            print(f"\n{'─'*70}")
+            print(f"\n{'-'*70}")
             print(f"Training on {task_name} (Task {task_id + 1}/{len(tasks)})")
             print(f"Samples: {len(task_data)}")
-            print(f"{'─'*70}")
+            print(f"{'='*70}")
             
             self._train_on_task(task_id, task_data)
             
@@ -339,9 +345,9 @@ class NaiveFinetuningTrainer(SGCLTrainer):
         print("Baseline: Naive Fine-tuning (no SID, no guardrails)")
 
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ==============================================================================
 # Convenience Functions
-# ══════════════════════════════════════════════════════════════════════════════
+# ==============================================================================
 
 def train_sgcl(
     tasks: List[List[str]],
