@@ -59,11 +59,21 @@ class BaselineTrainer:
             device_map="auto"
         )
         
-        # Apply LoRA
+        # Apply LoRA with auto-detected target modules
         if "gpt2" in config.model_name.lower():
             target_modules = ["c_attn"]
         else:
-            target_modules = ["q_proj", "v_proj"]
+            # Auto-detect attention modules
+            target_modules = []
+            for name, module in self.model.named_modules():
+                if "self_attn" in name or "attention" in name:
+                    if any(x in name for x in ["q_proj", "k_proj", "v_proj", "qkv_proj", "o_proj"]):
+                        module_name = name.split(".")[-1]
+                        if module_name not in target_modules:
+                            target_modules.append(module_name)
+            
+            if not target_modules:
+                target_modules = ["qkv_proj"]  # Phi-3 uses qkv_proj
             
         lora_config = LoraConfig(
             r=config.lora_r,

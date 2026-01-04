@@ -84,11 +84,22 @@ class SGCLTrainer:
         )
         
         # Apply LoRA with model-specific target modules
-        # GPT-2 uses "c_attn", Phi-3/Llama use "q_proj", "v_proj"
+        # Auto-detect attention modules based on model architecture
         if "gpt2" in config.model_name.lower():
             target_modules = ["c_attn"]
         else:
-            target_modules = ["q_proj", "v_proj"]
+            # For Phi-3 and other models, find all linear layers in attention
+            target_modules = []
+            for name, module in self.model.named_modules():
+                if "self_attn" in name or "attention" in name:
+                    if any(x in name for x in ["q_proj", "k_proj", "v_proj", "qkv_proj", "o_proj"]):
+                        module_name = name.split(".")[-1]
+                        if module_name not in target_modules:
+                            target_modules.append(module_name)
+            
+            # Fallback to common patterns
+            if not target_modules:
+                target_modules = ["qkv_proj"]  # Phi-3 uses qkv_proj
             
         lora_config = LoraConfig(
             r=config.lora_r,
