@@ -308,8 +308,8 @@ class EWCTrainer(BaselineTrainer):
             ewc_loss = 0.0
             for name, param in self.model.named_parameters():
                 if name in self.fisher_dict:
-                    fisher = self.fisher_dict[name]
-                    optpar = self.optpar_dict[name]
+                    fisher = self.fisher_dict[name].to(param.device)
+                    optpar = self.optpar_dict[name].to(param.device)
                     ewc_loss += (fisher * (param - optpar).pow(2)).sum()
             
             loss = loss + self.config.ewc_lambda * ewc_loss
