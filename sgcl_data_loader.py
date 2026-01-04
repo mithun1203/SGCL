@@ -206,6 +206,29 @@ def create_minimal_tasks() -> Tuple[List[List[str]], List[str]]:
 # Convenience Functions
 # ══════════════════════════════════════════════════════════════════════════════
 
+def load_seca_tasks(
+    seca_path: str = "sid/seca_publication_v2.json"
+) -> Tuple[List[List[str]], List[str]]:
+    """
+    Load full SeCA v2.0 dataset for training.
+    
+    Returns:
+        (tasks, task_names) tuple ready for SGCLTrainer
+    
+    Example:
+        >>> tasks, names = load_seca_tasks()
+        >>> trainer = SGCLTrainer(config)
+        >>> trainer.train_on_tasks(tasks, names)
+    """
+    try:
+        loader = SeCALoader(seca_path)
+        return loader.get_tasks(), loader.get_task_names()
+    except FileNotFoundError:
+        print(f"WARNING: SeCA file not found at {seca_path}")
+        print("Falling back to toy tasks for demonstration")
+        return create_toy_tasks()
+
+
 def load_seca_for_training(
     seca_path: str = "sid/seca_publication_v2.json",
     subset: Optional[List[int]] = None
