@@ -1,11 +1,63 @@
-# Semantic Inconsistency Detector (SID)
-
-## Part of the Symbolic-Gated Continual Learning (SG-CL) Framework
+# Symbolic-Gated Continual Learning (SG-CL)
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A neuro-symbolic module for detecting semantic conflicts in knowledge statements. SID is the core conflict detection component of the SG-CL framework, designed to prevent semantic inconsistencies in Large Language Model fine-tuning.
+A neuro-symbolic framework for continual learning in Large Language Models with conflict detection and guardrails.
+
+## 📁 Project Structure
+
+```
+SGCL/
+├── sid/                    # Semantic Inconsistency Detector (Core)
+│   ├── detector.py         # Main conflict detector
+│   ├── pipeline.py         # Complete SID pipeline
+│   ├── conflict_engine.py  # Conflict detection logic
+│   ├── entity_extractor.py # NLP entity extraction
+│   ├── relation_mapper.py  # Relation mapping
+│   ├── hybrid_kb.py        # Knowledge base interface
+│   ├── conceptnet_client.py# ConceptNet integration
+│   ├── knowledge_base.json # Mini KB (offline)
+│   ├── knowledge_base_full.json # Full ConceptNet (142K concepts)
+│   └── seca_10k_dataset.json   # 10K training dataset
+│
+├── guardrail/              # SG-CL Guardrails
+│   ├── guardrail_controller.py # Training guardrail controller
+│   └── guardrail_generator.py  # Guardrail generation
+│
+├── seca/                   # SeCA Dataset Tools
+│   ├── view_seca_dataset.py    # Dataset viewer
+│   ├── generate_augmented_dataset.py # Dataset generator
+│   ├── audit_and_fix_dataset.py     # Dataset validator
+│   └── evaluation_splits/  # Train/test splits
+│
+├── scp/                    # SCP Evaluation
+│   └── scp_evaluation.py   # Semantic Consistency metrics
+│
+├── scripts/                # Utility Scripts
+│   ├── run_quick_test.py   # Quick validation test
+│   ├── run_mini_cpu_experiment.py # CPU-only test
+│   ├── verify_integration.py      # Integration tests
+│   ├── download_full_conceptnet.py # KB downloader
+│   └── upgrade_conceptnet_kb.py    # KB upgrade script
+│
+├── docs/                   # Documentation
+│   ├── SECA_10K_FINAL.md   # Dataset documentation
+│   ├── COMPLETE_SYSTEM.md  # System overview
+│   ├── KAGGLE_SETUP.md     # Kaggle instructions
+│   └── ...
+│
+├── Core Files
+│   ├── sgcl_training.py    # SG-CL training engine
+│   ├── sgcl_data_loader.py # SeCA data loader
+│   ├── baseline_methods.py # Baseline methods (Naive, EWC, Replay)
+│   ├── results_analysis.py # Visualization & analysis
+│   ├── run_full_experiments.py    # Experiment orchestrator
+│   └── kaggle_sgcl_final.ipynb   # Kaggle notebook
+│
+├── tests/                  # Unit Tests
+└── requirements.txt        # Python dependencies
+```
 
 ---
 

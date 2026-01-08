@@ -26,7 +26,7 @@ from baseline_methods import (
     ReplayTrainer,
     BaselineConfig
 )
-from scp_evaluation import compare_methods
+from scp.scp_evaluation import compare_methods
 from sgcl_data_loader import load_seca_tasks
 
 
