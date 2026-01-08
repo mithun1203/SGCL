@@ -3,9 +3,15 @@ SeCA Dataset Loader for SG-CL Training
 
 Loads SeCA v2.0 dataset in task-sequential format for continual learning experiments.
 Each task represents a different drift scenario.
+
+Features:
+- Dynamic 80/20 train/test split
+- Reproducible with seed
+- Task-sequential loading
 """
 
 import json
+import random
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
@@ -36,12 +42,12 @@ class SeCALoader:
     8. delayed_drift
     """
     
-    def __init__(self, seca_path: str = "sid/seca_publication_v2.json"):
+    def __init__(self, seca_path: str = "sid/seca_10k_dataset.json"):
         """
         Initialize SeCA loader.
         
         Args:
-            seca_path: Path to SeCA JSON file
+            seca_path: Path to SeCA JSON file (default: 10k augmented dataset)
         """
         self.seca_path = Path(seca_path)
         self.tasks: List[SeCATask] = []
@@ -207,10 +213,10 @@ def create_minimal_tasks() -> Tuple[List[List[str]], List[str]]:
 # ══════════════════════════════════════════════════════════════════════════════
 
 def load_seca_tasks(
-    seca_path: str = "sid/seca_publication_v2.json"
+    seca_path: str = "sid/seca_10k_dataset.json"
 ) -> Tuple[List[List[str]], List[str]]:
     """
-    Load full SeCA v2.0 dataset for training.
+    Load full SeCA 10k dataset for training.
     
     Returns:
         (tasks, task_names) tuple ready for SGCLTrainer
@@ -230,30 +236,74 @@ def load_seca_tasks(
 
 
 def load_seca_for_training(
-    seca_path: str = "sid/seca_publication_v2.json",
-    subset: Optional[List[int]] = None
-) -> Tuple[List[List[str]], List[str]]:
+    seca_path: str = "sid/seca_10k_dataset.json",
+    subset: Optional[List[int]] = None,
+    train_split: float = 0.8,
+    seed: int = 42
+) -> Tuple[List[List[str]], List[List[str]], List[str]]:
     """
-    Load SeCA dataset ready for training.
+    Load SeCA 10k dataset with 80/20 train/test split.
     
     Args:
         seca_path: Path to SeCA JSON
-        subset: Optional list of task IDs to use (e.g., [0, 1, 2] for first 3 tasks)
+        subset: Optional list of task IDs to use
+        train_split: Train split ratio (default 0.8 for 80/20)
+        seed: Random seed for reproducibility
     
     Returns:
-        (tasks, task_names) tuple ready for SGCLTrainer
+        (train_tasks, test_tasks, task_names) tuple ready for training
     
     Example:
-        >>> tasks, names = load_seca_for_training()
+        >>> train, test, names = load_seca_for_training()
         >>> trainer = SGCLTrainer(config)
-        >>> trainer.train_on_tasks(tasks, names)
+        >>> trainer.train_on_tasks(train, names)
+        >>> # Then evaluate on test
     """
     loader = SeCALoader(seca_path)
     
     if subset:
-        return loader.get_subset(subset)
+        all_tasks, task_names = loader.get_subset(subset)
     else:
-        return loader.get_tasks(), loader.get_task_names()
+        all_tasks, task_names = loader.get_tasks(), loader.get_task_names()
+    
+    # Split each task into train/test
+    random.seed(seed)
+    train_tasks = []
+    test_tasks = []
+    
+    for task in all_tasks:
+        task_copy = task.copy()
+        random.shuffle(task_copy)
+        
+        split_idx = int(len(task_copy) * train_split)
+        train_tasks.append(task_copy[:split_idx])
+        test_tasks.append(task_copy[split_idx:])
+    
+    return train_tasks, test_tasks, task_names
+
+
+def split_task_data(
+    task_samples: List[str],
+    train_split: float = 0.8,
+    seed: int = 42
+) -> Tuple[List[str], List[str]]:
+    """
+    Split a single task's samples into train/test.
+    
+    Args:
+        task_samples: List of samples for one task
+        train_split: Train ratio (default 0.8)
+        seed: Random seed
+    
+    Returns:
+        (train_samples, test_samples)
+    """
+    random.seed(seed)
+    shuffled = task_samples.copy()
+    random.shuffle(shuffled)
+    
+    split_idx = int(len(shuffled) * train_split)
+    return shuffled[:split_idx], shuffled[split_idx:]
 
 
 if __name__ == '__main__':

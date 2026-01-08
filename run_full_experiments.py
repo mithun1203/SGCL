@@ -86,8 +86,8 @@ def run_full_experiments(
         tasks, task_names = create_minimal_tasks()
         print(f"✓ Loaded mini dataset: {len(tasks)} tasks")
     else:
-        tasks, task_names = load_seca_tasks()
-        print(f"✓ Loaded full SeCA v2.0: {len(tasks)} tasks")
+        tasks, task_names = load_seca_tasks("sid/seca_10k_dataset.json")
+        print(f"✓ Loaded full SeCA 10k: {len(tasks)} tasks (10,000 samples)")
     
     # Limit samples per task if specified
     if max_steps_per_task:
