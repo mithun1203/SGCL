@@ -9,6 +9,14 @@
 - **Composition**: 320 high-quality core + 9,680 augmented samples
 - **Quality**: Hybrid approach (manual curation + systematic augmentation)
 
+### Dataset Justification
+
+SeCA consists of approximately 10,000 samples distributed across sequential tasks. The dataset is anchored by 320 manually curated samples and expanded via controlled paraphrasing and template-based augmentation. All augmented samples are validated using SID to preserve semantic correctness.
+
+### Limitations
+
+While a portion of SeCA is synthetically augmented, this design enables controlled analysis of semantic conflict and continual learning behavior. Future work will expand SeCA with more naturally occurring text.
+
 ---
 
 ## 🎯 Final Statistics
@@ -23,6 +31,28 @@ Total: 10,000 samples across 16 tasks
 Core Quality Samples:     320 (manually curated)
 Augmented Samples:        9,680 (template + paraphrase)
 ```
+
+### Per-Task Distribution
+
+| Task | #Samples | %Conflict | %Paraphrase |
+|------|----------|-----------|-------------|
+| T1 - Semantic Task 1 | 625 | 50.2% | 0.0% |
+| T2 - Semantic Task 2 | 625 | 47.0% | 0.0% |
+| T3 - Semantic Task 3 | 625 | 47.0% | 0.0% |
+| T4 - Semantic Task 4 | 625 | 47.0% | 0.0% |
+| T5 - Semantic Task 5 | 625 | 47.0% | 0.0% |
+| T6 - Semantic Task 6 | 625 | 50.2% | 0.0% |
+| T7 - Semantic Task 7 | 625 | 50.2% | 3.2% |
+| T8 - Semantic Task 8 | 625 | 50.2% | 0.0% |
+| T9 - Semantic Task 9 | 625 | 50.2% | 0.0% |
+| T10 - Semantic Task 10 | 625 | 47.0% | 0.0% |
+| T11 - Semantic Task 11 | 625 | 47.0% | 0.0% |
+| T12 - Semantic Task 12 | 625 | 47.0% | 0.0% |
+| T13 - Semantic Task 13 | 625 | 47.0% | 0.0% |
+| T14 - Semantic Task 14 | 625 | 50.2% | 0.0% |
+| T15 - Semantic Task 15 | 625 | 50.2% | 3.2% |
+| T16 - Semantic Task 16 | 625 | 50.2% | 0.0% |
+| **TOTAL** | **10,000** | **48.6%** | **0.4%** |
 
 ---
 

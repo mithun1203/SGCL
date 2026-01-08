@@ -255,6 +255,39 @@ Guard-rails generated: 3
 
 ---
 
+## 📊 SeCA Dataset
+
+**SeCA (Semantic Consistency Aware) v2.0 - 10K Edition**
+
+The benchmark dataset for evaluating semantic conflict detection and continual learning.
+
+### Dataset Composition
+
+SeCA consists of approximately 10,000 samples distributed across sequential tasks. The dataset is anchored by 320 manually curated samples and expanded via controlled paraphrasing and template-based augmentation. All augmented samples are validated using SID to preserve semantic correctness.
+
+**Statistics**:
+- **Total Samples**: 10,000 across 16 tasks
+- **Per Task**: 625 samples (500 train / 125 test)
+- **Conflict Rate**: 48.6% overall
+- **Core Quality**: 320 manually curated samples
+- **Augmented**: 9,680 systematically generated samples
+
+### Limitations
+
+While a portion of SeCA is synthetically augmented, this design enables controlled analysis of semantic conflict and continual learning behavior. Future work will expand SeCA with more naturally occurring text.
+
+### Conflict Types
+
+- **Direct Contradiction** (16.1%): Statements that directly contradict each other
+- **Exception Violation** (15.7%): General rules with missing exceptions
+- **Attribute Conflict** (15.7%): Incompatible property assignments
+- **Delayed Conflict** (0.4%): Conflicts emerging across tasks
+- **Paraphrase Conflict** (0.4%): Semantically equivalent conflicts
+
+See `docs/SECA_10K_FINAL.md` for complete documentation.
+
+---
+
 ## 🚀 Quick Start
 
 ### Installation
