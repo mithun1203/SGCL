@@ -87,8 +87,11 @@ class SGCLTrainer:
         # Auto-detect attention modules based on model architecture
         if "gpt2" in config.model_name.lower():
             target_modules = ["c_attn"]
+        elif "phi" in config.model_name.lower():
+            # Phi-3 uses qkv_proj for combined attention
+            target_modules = ["qkv_proj", "o_proj"]
         else:
-            # For Phi-3 and other models, find all linear layers in attention
+            # For other models, find all linear layers in attention
             target_modules = []
             for name, module in self.model.named_modules():
                 if "self_attn" in name or "attention" in name:
@@ -99,7 +102,7 @@ class SGCLTrainer:
             
             # Fallback to common patterns
             if not target_modules:
-                target_modules = ["qkv_proj"]  # Phi-3 uses qkv_proj
+                target_modules = ["q_proj", "v_proj"]  # Standard transformer pattern
             
         lora_config = LoraConfig(
             r=config.lora_r,
