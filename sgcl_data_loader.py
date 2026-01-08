@@ -61,33 +61,69 @@ class SeCALoader:
         with open(self.seca_path, 'r') as f:
             data = json.load(f)
         
-        dataset_info = data.get('dataset_info', {})
-        tasks_data = data.get('tasks', {})
+        # Handle both old dict format and new list format
+        if 'dataset_info' in data:
+            # Old format
+            dataset_info = data.get('dataset_info', {})
+            tasks_data = data.get('tasks', {})
+            version = dataset_info.get('version', 'Unknown')
+            total_samples = dataset_info.get('total_samples', 0)
+            is_list_format = False
+        else:
+            # New 10k format
+            version = data.get('version', 'Unknown')
+            total_samples = data.get('total_samples', 0)
+            tasks_data = data.get('tasks', [])
+            is_list_format = isinstance(tasks_data, list)
         
-        print(f"Loading SeCA v{dataset_info.get('version', 'Unknown')}")
-        print(f"Total samples: {dataset_info.get('total_samples', 0)}")
+        print(f"Loading SeCA v{version}")
+        print(f"Total samples: {total_samples}")
         print(f"Tasks: {len(tasks_data)}")
         
-        # Parse tasks
-        for task_id, (task_name, task_info) in enumerate(tasks_data.items()):
-            samples = []
-            
-            # Extract samples from scenarios
-            for scenario in task_info.get('scenarios', []):
-                samples.append(scenario['input'])
-                samples.append(scenario['conflict'])
+        # Parse tasks based on format
+        if is_list_format:
+            # New format: tasks is a list of task objects
+            for task_obj in tasks_data:
+                task_id = task_obj.get('task_id', 0)
+                task_name = task_obj.get('name', f"Task {task_id}")
+                samples_list = task_obj.get('samples', [])
                 
-                # Add supporting facts if available
-                if 'supporting_facts' in scenario:
-                    samples.extend(scenario['supporting_facts'])
-            
-            self.tasks.append(SeCATask(
-                task_id=task_id,
-                task_name=task_name,
-                drift_type=task_info.get('type', 'unknown'),
-                samples=samples,
-                description=task_info.get('description', '')
-            ))
+                # Extract sentences from sample objects
+                samples = []
+                for sample in samples_list:
+                    if isinstance(sample, dict) and 'sentence' in sample:
+                        samples.append(sample['sentence'])
+                    elif isinstance(sample, str):
+                        samples.append(sample)
+                
+                self.tasks.append(SeCATask(
+                    task_id=task_id,
+                    task_name=task_name,
+                    drift_type=task_obj.get('type', 'semantic_shift'),
+                    samples=samples,
+                    description=task_obj.get('description', '')
+                ))
+        else:
+            # Old format: tasks is a dict
+            for task_id, (task_name, task_info) in enumerate(tasks_data.items()):
+                samples = []
+                
+                # Extract samples from scenarios
+                for scenario in task_info.get('scenarios', []):
+                    samples.append(scenario['input'])
+                    samples.append(scenario['conflict'])
+                    
+                    # Add supporting facts if available
+                    if 'supporting_facts' in scenario:
+                        samples.extend(scenario['supporting_facts'])
+                
+                self.tasks.append(SeCATask(
+                    task_id=task_id,
+                    task_name=task_name,
+                    drift_type=task_info.get('type', 'unknown'),
+                    samples=samples,
+                    description=task_info.get('description', '')
+                ))
     
     def get_tasks(self) -> List[List[str]]:
         """
