@@ -1,4 +1,4 @@
-"""
+﻿"""
 ConceptNet FULL 20GB Dataset Downloader
 =======================================
 
@@ -83,7 +83,7 @@ def download_with_progress(url: str, output_path: Path) -> bool:
                 # Progress bar
                 bar_length = 50
                 filled = int(bar_length * percent / 100)
-                bar = "█" * filled + "░" * (bar_length - filled)
+                bar = "â–ˆ" * filled + "â–‘" * (bar_length - filled)
                 
                 # Speed calculation
                 elapsed = time.time() - start_time
@@ -113,7 +113,7 @@ def download_with_progress(url: str, output_path: Path) -> bool:
         avg_speed = (file_size / (1024 * 1024)) / elapsed
         
         print(f"\n{'='*70}")
-        print(f"✓ Download Complete!")
+        print(f"âœ“ Download Complete!")
         print(f"  Time: {int(elapsed/60)}m {int(elapsed%60)}s")
         print(f"  Size: {format_size(file_size)}")
         print(f"  Avg Speed: {avg_speed:.1f} MB/s")
@@ -121,12 +121,12 @@ def download_with_progress(url: str, output_path: Path) -> bool:
         return True
         
     except KeyboardInterrupt:
-        print(f"\n\n✗ Download cancelled by user")
+        print(f"\n\nâœ— Download cancelled by user")
         if output_path.exists():
             output_path.unlink()
         return False
     except Exception as e:
-        print(f"\n\n✗ Download failed: {e}")
+        print(f"\n\nâœ— Download failed: {e}")
         if output_path.exists():
             output_path.unlink()
         return False
@@ -286,7 +286,7 @@ def parse_full_conceptnet(csv_path: Path, output_json: Path) -> bool:
         file_size = output_json.stat().st_size
         
         print(f"\n{'='*70}")
-        print("✓ PARSING COMPLETE!")
+        print("âœ“ PARSING COMPLETE!")
         print(f"{'='*70}")
         print(f"Total processing time: {int(elapsed/60)}m {int(elapsed%60)}s")
         print(f"Total rows processed: {total_rows:,}")
@@ -302,10 +302,10 @@ def parse_full_conceptnet(csv_path: Path, output_json: Path) -> bool:
         return True
         
     except KeyboardInterrupt:
-        print(f"\n\n✗ Parsing cancelled by user")
+        print(f"\n\nâœ— Parsing cancelled by user")
         return False
     except Exception as e:
-        print(f"\n\n✗ Parsing failed: {e}")
+        print(f"\n\nâœ— Parsing failed: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -326,7 +326,7 @@ def main():
     # Confirm
     response = input("\nProceed with full download? (yes/no): ").strip().lower()
     if response not in ['yes', 'y']:
-        print("✗ Cancelled by user")
+        print("âœ— Cancelled by user")
         return
     
     # Paths
@@ -335,7 +335,7 @@ def main():
     
     # Step 1: Download
     if csv_path.exists():
-        print(f"\n✓ Dataset already downloaded: {csv_path}")
+        print(f"\nâœ“ Dataset already downloaded: {csv_path}")
         size = csv_path.stat().st_size
         print(f"  Size: {format_size(size)}")
         
@@ -370,15 +370,15 @@ def main():
         backup = KB_DIR / "knowledge_base_mini_backup.json"
         import shutil
         shutil.copy(old_kb, backup)
-        print(f"✓ Backed up old KB: {backup}")
+        print(f"âœ“ Backed up old KB: {backup}")
     
     # Create symlink or copy
     import shutil
     shutil.copy(json_path, old_kb)
-    print(f"✓ Installed full KB as default: {old_kb}")
+    print(f"âœ“ Installed full KB as default: {old_kb}")
     
     print(f"\n{'='*70}")
-    print("✓ COMPLETE!")
+    print("âœ“ COMPLETE!")
     print(f"{'='*70}")
     print(f"Full KB: {json_path}")
     print(f"Default KB: {old_kb}")
@@ -391,5 +391,6 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print("\n\n✗ Interrupted by user. Exiting.")
+        print("\n\nâœ— Interrupted by user. Exiting.")
         sys.exit(1)
+
