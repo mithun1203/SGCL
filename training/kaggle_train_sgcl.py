@@ -16,18 +16,18 @@ Upload required files:
 # SETUP
 # ============================================================================
 
-print("📦 Installing required packages...")
-!pip install -q transformers peft accelerate bitsandbytes sentencepiece
-
 import sys
 import torch
 import json
 from pathlib import Path
 
+print("📦 Checking GPU availability...")
+
 # Check GPU
 print(f"\n🖥️  Device: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}")
 print(f"GPU Available: {torch.cuda.is_available()}")
-print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
+if torch.cuda.is_available():
+    print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB")
 
 # ============================================================================
 # IMPORT SG-CL TRAINER
