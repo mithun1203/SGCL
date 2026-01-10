@@ -185,9 +185,18 @@ class SGCLTrainer:
     def _setup_sid_and_guardrails(self):
         """Initialize SID and guard-rail generator."""
         if self.config.enable_sid:
-            logger.info("🧠 Initializing SID...")
-            self.sid = SemanticInconsistencyDetector()
-            logger.info("✓ SID initialized")
+            logger.info("🧠 Initializing SID in OFFLINE mode (ConceptNet API unreliable)...")
+            # Force offline mode to avoid API errors
+            from sid.conceptnet_client import ConceptNetConfig
+            offline_config = ConceptNetConfig(
+                offline_only=True,
+                knowledge_base_path=str(Path(__file__).parent.parent / "sid" / "knowledge_base.json")
+            )
+            self.sid = SemanticInconsistencyDetector(cn_client=None)
+            # Manually set offline config
+            if hasattr(self.sid, 'cn_client') and self.sid.cn_client:
+                self.sid.cn_client.config = offline_config
+            logger.info("✓ SID initialized in offline mode")
         else:
             self.sid = None
         
