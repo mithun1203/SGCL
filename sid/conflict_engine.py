@@ -101,6 +101,20 @@ class ConflictEngine:
             conflict_type=ConflictType.PROPERTY_CONFLICT
         ),
         ConflictRule(
+            name="isa_negation",
+            description="IsA conflicts with NotIsA",
+            source_relations=["IsA"],
+            conflicting_relations=["NotIsA"],
+            conflict_type=ConflictType.DIRECT_CONTRADICTION
+        ),
+        ConflictRule(
+            name="isa_negation_reverse",
+            description="NotIsA conflicts with IsA",
+            source_relations=["NotIsA"],
+            conflicting_relations=["IsA"],
+            conflict_type=ConflictType.PROPERTY_CONFLICT
+        ),
+        ConflictRule(
             name="has_a_negation",
             description="HasA conflicts with NotHasA",
             source_relations=["HasA"],
@@ -567,6 +581,26 @@ class ConflictEngine:
         
         # Check conflicts for each extracted triple
         all_conflicts = []
+        
+        # First, check for conflicts BETWEEN extracted triples (intra-input conflicts)
+        for i, triple1 in enumerate(extracted_triples):
+            for j, triple2 in enumerate(extracted_triples):
+                if i >= j:  # Skip self-comparison and duplicates
+                    continue
+                
+                # Check if these two triples conflict with each other
+                inter_conflicts = self._check_inter_triple_conflicts(triple1, triple2)
+                all_conflicts.extend(inter_conflicts)
+        
+        # Check for inheritance-based conflicts (e.g., "birds fly" + "penguins can't fly" where penguin IsA bird)
+        inheritance_conflicts = self._check_inheritance_conflicts(extracted_triples)
+        all_conflicts.extend(inheritance_conflicts)
+        
+        # Check for KB-based inheritance conflicts (e.g., extracted "penguins cannot fly" vs KB "birds can fly")
+        kb_inheritance_conflicts = self._check_kb_inheritance_conflicts(extracted_triples, all_kb_facts)
+        all_conflicts.extend(kb_inheritance_conflicts)
+        
+        # Then, check conflicts against KB for each extracted triple
         for triple in extracted_triples:
             has_conflict, evidence = self.check_conflict(triple)
             all_conflicts.extend(evidence)
@@ -583,6 +617,235 @@ class ConflictEngine:
         )
         
         return result
+    
+    def _check_inter_triple_conflicts(
+        self,
+        triple1: Triple,
+        triple2: Triple
+    ) -> List[ConflictEvidence]:
+        """
+        Check if two extracted triples conflict with each other.
+        
+        For example:
+        - "dog IsA animal" conflicts with "dog NotIsA animal"
+        - "bird CapableOf fly" conflicts with "bird NotCapableOf fly"
+        """
+        conflicts = []
+        
+        # Normalize concepts for comparison
+        subject1 = self._normalize_concept(triple1.subject)
+        subject2 = self._normalize_concept(triple2.subject)
+        object1 = self._normalize_concept(triple1.object)
+        object2 = self._normalize_concept(triple2.object)
+        
+        # Check if subjects and objects match
+        if subject1 != subject2 or object1 != object2:
+            return conflicts
+        
+        # Check for opposing relations
+        opposing_pairs = [
+            ("IsA", "NotIsA"),
+            ("CapableOf", "NotCapableOf"),
+            ("HasProperty", "NotHasProperty"),
+            ("HasA", "NotHasA"),
+        ]
+        
+        for pos_rel, neg_rel in opposing_pairs:
+            if (triple1.relation == pos_rel and triple2.relation == neg_rel) or \
+               (triple1.relation == neg_rel and triple2.relation == pos_rel):
+                
+                reasoning = [
+                    f"Statement 1: {triple1.to_natural_language()}",
+                    f"Statement 2: {triple2.to_natural_language()}",
+                    f"These are directly contradictory - same subject and object but opposite relations."
+                ]
+                
+                conflicts.append(ConflictEvidence(
+                    source_triple=triple1,
+                    conflicting_triple=triple2,
+                    conflict_type=ConflictType.DIRECT_CONTRADICTION,
+                    reasoning_chain=reasoning,
+                    confidence=min(triple1.confidence, triple2.confidence)
+                ))
+                break
+        
+        return conflicts
+    
+    def _check_inheritance_conflicts(
+        self,
+        triples: List[Triple]
+    ) -> List[ConflictEvidence]:
+        """
+        Check for conflicts based on inheritance relationships.
+        
+        Example:
+        - "birds CapableOf fly" + "penguins NotCapableOf fly" where "penguin IsA bird"
+        - "All birds have feathers" + "Penguins are birds" + "Penguins cannot fly"
+        
+        This checks if:
+        1. Triple A says "X has property P"
+        2. Triple B says "Y has NOT property P" (or opposite)
+        3. KB says "Y IsA X" (inheritance relationship)
+        
+        Args:
+            triples: All extracted triples from the input
+        
+        Returns:
+            List of conflict evidence
+        """
+        conflicts = []
+        
+        # Check all pairs of triples
+        for i, triple1 in enumerate(triples):
+            for j, triple2 in enumerate(triples):
+                if i >= j:
+                    continue
+                
+                # Check if triple1 and triple2 have opposing relations and same object
+                opposing_pairs = [
+                    ("CapableOf", "NotCapableOf"),
+                    ("HasProperty", "NotHasProperty"),
+                    ("HasA", "NotHasA"),
+                ]
+                
+                for pos_rel, neg_rel in opposing_pairs:
+                    # Check if relations are opposing
+                    if not ((triple1.relation == pos_rel and triple2.relation == neg_rel) or
+                            (triple1.relation == neg_rel and triple2.relation == pos_rel)):
+                        continue
+                    
+                    # Check if objects match
+                    obj1 = self._normalize_concept(triple1.object)
+                    obj2 = self._normalize_concept(triple2.object)
+                    if obj1 != obj2:
+                        continue
+                    
+                    # Check if subject2 IsA subject1 (inheritance)
+                    subj1 = self._normalize_concept(triple1.subject)
+                    subj2 = self._normalize_concept(triple2.subject)
+                    
+                    if subj1 == subj2:
+                        continue  # Same subject, handled by inter-triple check
+                    
+                    # Check both directions: subj2 IsA subj1 OR subj1 IsA subj2
+                    is_related = False
+                    parent = None
+                    child = None
+                    
+                    # Check if subj2 IsA subj1
+                    isa_edges = self.conceptnet_client.query_relation(subj2, "IsA", subj1)
+                    if isa_edges:
+                        is_related = True
+                        parent = subj1
+                        child = subj2
+                    
+                    # Check if subj1 IsA subj2
+                    if not is_related:
+                        isa_edges = self.conceptnet_client.query_relation(subj1, "IsA", subj2)
+                        if isa_edges:
+                            is_related = True
+                            parent = subj2
+                            child = subj1
+                    
+                    if is_related:
+                        # Found inheritance-based conflict!
+                        parent_triple = triple1 if parent == subj1 else triple2
+                        child_triple = triple2 if child == subj2 else triple1
+                        
+                        reasoning = [
+                            f"Parent class statement: {parent_triple.to_natural_language()}",
+                            f"Child class statement: {child_triple.to_natural_language()}",
+                            f"Inheritance: {child} IsA {parent} (from knowledge base)",
+                            f"Exception/Conflict: The child class contradicts the parent class property."
+                        ]
+                        
+                        conflicts.append(ConflictEvidence(
+                            source_triple=child_triple,
+                            conflicting_triple=parent_triple,
+                            conflict_type=ConflictType.INHERITANCE_CONFLICT,
+                            reasoning_chain=reasoning,
+                            confidence=min(triple1.confidence, triple2.confidence) * 0.9  # Slightly lower confidence
+                        ))
+        
+        return conflicts
+    
+    def _check_kb_inheritance_conflicts(
+        self,
+        extracted_triples: List[Triple],
+        kb_facts: List[Triple]
+    ) -> List[ConflictEvidence]:
+        """
+        Check for conflicts between extracted triples and KB facts via inheritance.
+        
+        Example:
+        - Extracted: "penguins NotCapableOf fly"
+        - KB: "birds CapableOf fly" + "penguin IsA bird"
+        - Conflict: Penguin inherits from bird, but contradicts bird's capability
+        
+        Args:
+            extracted_triples: Triples extracted from input
+            kb_facts: Facts from knowledge base
+        
+        Returns:
+            List of conflict evidence
+        """
+        conflicts = []
+        
+        # For each extracted triple
+        for ext_triple in extracted_triples:
+            # Check if it contradicts any KB fact via inheritance
+            ext_subj = self._normalize_concept(ext_triple.subject)
+            ext_obj = self._normalize_concept(ext_triple.object)
+            
+            # Look for opposing relations in KB
+            opposing_pairs = [
+                ("CapableOf", "NotCapableOf"),
+                ("HasProperty", "NotHasProperty"),
+                ("HasA", "NotHasA"),
+            ]
+            
+            for pos_rel, neg_rel in opposing_pairs:
+                # Check if ext_triple has one relation
+                if ext_triple.relation not in [pos_rel, neg_rel]:
+                    continue
+                
+                # Find opposite relation
+                opposite_rel = neg_rel if ext_triple.relation == pos_rel else pos_rel
+                
+                # Look for KB facts with opposite relation and same object
+                for kb_fact in kb_facts:
+                    if kb_fact.relation != opposite_rel:
+                        continue
+                    
+                    kb_obj = self._normalize_concept(kb_fact.object)
+                    if kb_obj != ext_obj:
+                        continue
+                    
+                    # Same object, opposite relation - check if subjects are related via IsA
+                    kb_subj = self._normalize_concept(kb_fact.subject)
+                    if kb_subj == ext_subj:
+                        continue  # Same subject, will be handled elsewhere
+                    
+                    # Check if ext_subj IsA kb_subj (child IsA parent)
+                    isa_edges = self.conceptnet_client.query_relation(ext_subj, "IsA", kb_subj)
+                    if isa_edges:
+                        # Found KB-based inheritance conflict!
+                        reasoning = [
+                            f"Extracted statement: {ext_triple.to_natural_language()}",
+                            f"KB parent class: {kb_fact.to_natural_language()}",
+                            f"Inheritance: {ext_subj} IsA {kb_subj} (from knowledge base)",
+                            f"Conflict: Child class contradicts inherited parent property."
+                        ]
+                        
+                        conflicts.append(ConflictEvidence(
+                            source_triple=ext_triple,
+                            conflicting_triple=kb_fact,
+                            conflict_type=ConflictType.INHERITANCE_CONFLICT,
+                            reasoning_chain=reasoning,
+                            confidence=ext_triple.confidence * 0.85  # Lower confidence for KB-based
+                        ))
+        
+        return conflicts
     
     def get_potential_conflicts(
         self,

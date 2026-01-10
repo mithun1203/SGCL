@@ -222,10 +222,17 @@ class ConceptNetClient:
             ],
             "penguin": [
                 {"start": "/c/en/penguin", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
-                {"start": "/c/en/penguin", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 4.0},
-                {"start": "/c/en/penguin", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 4.5},
-                {"start": "/c/en/penguin", "rel": "/r/AtLocation", "end": "/c/en/antarctica", "weight": 3.0},
-                {"start": "/c/en/penguin", "rel": "/r/HasProperty", "end": "/c/en/flightless", "weight": 4.0},
+                {"start": "/c/en/penguin", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+                {"start": "/c/en/penguin", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
+                {"start": "/c/en/penguin", "rel": "/r/AtLocation", "end": "/c/en/antarctica", "weight": 4.0},
+                {"start": "/c/en/penguin", "rel": "/r/HasA", "end": "/c/en/wing", "weight": 3.0},
+                {"start": "/c/en/penguin", "rel": "/r/HasA", "end": "/c/en/feather", "weight": 4.0},
+            ],
+            "penguins": [
+                {"start": "/c/en/penguins", "rel": "/r/IsA", "end": "/c/en/birds", "weight": 5.0},
+                {"start": "/c/en/penguins", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
+                {"start": "/c/en/penguins", "rel": "/r/CapableOf", "end": "/c/en/swim", "weight": 5.0},
+                {"start": "/c/en/penguins", "rel": "/r/NotCapableOf", "end": "/c/en/fly", "weight": 5.0},
             ],
             "ostrich": [
                 {"start": "/c/en/ostrich", "rel": "/r/IsA", "end": "/c/en/bird", "weight": 5.0},
@@ -336,9 +343,24 @@ class ConceptNetClient:
                         data = json.load(f)
                     
                     if "concepts" in data:
-                        # Merge with existing KB (external takes precedence)
+                        # Merge with existing KB (preserve hardcoded, add external)
                         for concept, edges in data["concepts"].items():
-                            self._offline_kb[concept] = edges
+                            if concept in self._offline_kb:
+                                # Merge: keep hardcoded edges + add external edges
+                                existing_edges = self._offline_kb[concept]
+                                # Add external edges that don't duplicate existing ones
+                                for ext_edge in edges:
+                                    # Check if this edge already exists (same rel + end)
+                                    is_duplicate = any(
+                                        e.get('rel') == ext_edge.get('rel') and 
+                                        e.get('end') == ext_edge.get('end')
+                                        for e in existing_edges
+                                    )
+                                    if not is_duplicate:
+                                        existing_edges.append(ext_edge)
+                            else:
+                                # New concept, just add it
+                                self._offline_kb[concept] = edges
                         
                         logger.info(f"Loaded {len(data['concepts'])} concepts from {kb_path}")
                     return
@@ -480,13 +502,18 @@ class ConceptNetClient:
                 edges = [ConceptNetEdge.from_api_response(e) for e in cached]
                 return self._filter_edges(edges, relations, limit)
         
-        # Try offline KB first - try both singular and original forms
+        # Try offline KB first - check both singular and original forms, merge all matches
         all_edges = []
+        seen_edges = set()  # Track unique edges by (start, rel, end)
+        
         for lookup_key in [concept_singular, concept_normalized]:
             if lookup_key in self._offline_kb:
                 for edge_data in self._offline_kb[lookup_key]:
-                    all_edges.append(ConceptNetEdge.from_api_response(edge_data))
-                break  # Found edges, don't duplicate
+                    # Create unique key for deduplication
+                    edge_key = (edge_data.get('start'), edge_data.get('rel'), edge_data.get('end'))
+                    if edge_key not in seen_edges:
+                        seen_edges.add(edge_key)
+                        all_edges.append(ConceptNetEdge.from_api_response(edge_data))
         
         # Try API if online and not in offline-only mode
         if HAS_REQUESTS and self.session and not self.config.offline_only:
@@ -588,17 +615,28 @@ class ConceptNetClient:
         # Check offline KB
         results = []
         subject_normalized = subject.lower().strip()
+        subject_singular = self._normalize_to_singular(subject_normalized)
         relation_uri = f"/r/{relation}" if not relation.startswith("/r/") else relation
         
-        if subject_normalized in self._offline_kb:
-            for edge_data in self._offline_kb[subject_normalized]:
-                if edge_data.get("rel") == relation_uri:
-                    if object_concept is None:
-                        results.append(ConceptNetEdge.from_api_response(edge_data))
-                    else:
-                        obj_uri = f"/c/en/{object_concept.lower().strip()}"
-                        if edge_data.get("end") == obj_uri:
+        # Try both singular and original forms (collect all matches)
+        seen_edges = set()  # Track seen edges to avoid duplicates
+        for lookup_key in [subject_singular, subject_normalized]:
+            if lookup_key in self._offline_kb:
+                for edge_data in self._offline_kb[lookup_key]:
+                    if edge_data.get("rel") == relation_uri:
+                        edge_key = (edge_data.get("start"), edge_data.get("rel"), edge_data.get("end"))
+                        if edge_key in seen_edges:
+                            continue
+                        seen_edges.add(edge_key)
+                        
+                        if object_concept is None:
                             results.append(ConceptNetEdge.from_api_response(edge_data))
+                        else:
+                            obj_normalized = object_concept.lower().strip()
+                            obj_singular = self._normalize_to_singular(obj_normalized)
+                            obj_uri = f"/c/en/{obj_singular}"
+                            if edge_data.get("end") == obj_uri or edge_data.get("end") == f"/c/en/{obj_normalized}":
+                                results.append(ConceptNetEdge.from_api_response(edge_data))
         
         # Try API if not in offline-only mode
         if HAS_REQUESTS and self.session and not self.config.offline_only:
