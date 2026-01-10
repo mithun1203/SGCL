@@ -8,9 +8,9 @@ import sys
 print(" Setting up full ConceptNet KB for offline operation...")
 print("=" * 60)
 
-# Run the download script
+# Run the download script with --auto flag (skips interactive prompt)
 print("\n Downloading ConceptNet 5.7...")
-result = subprocess.run([sys.executable, "scripts/download_full_conceptnet.py"], 
+result = subprocess.run([sys.executable, "scripts/download_full_conceptnet.py", "--auto"], 
                        capture_output=False)
 
 if result.returncode == 0:
