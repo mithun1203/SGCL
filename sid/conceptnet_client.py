@@ -386,6 +386,11 @@ class ConceptNetClient:
     
     def _make_request(self, endpoint: str, params: Optional[Dict] = None) -> Optional[Dict]:
         """Make HTTP request to ConceptNet API with retry logic."""
+        # Block all API calls in offline mode
+        if self.config.offline_only:
+            logger.debug("Offline mode enabled - skipping API call")
+            return {"edges": []}
+        
         if not HAS_REQUESTS or not self.session:
             return None
         
