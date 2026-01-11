@@ -197,7 +197,8 @@ class ConceptNetClient:
         self.rate_limiter = RateLimiter(self.config.rate_limit_requests_per_second)
         
         # Session for connection pooling
-        if HAS_REQUESTS:
+        # IMPORTANT: Don't create session in offline mode to prevent any API calls
+        if HAS_REQUESTS and not self.config.offline_only:
             self.session = requests.Session()
             self.session.headers.update({
                 "User-Agent": "SGCL-SID/1.0 (Semantic Inconsistency Detector)",
@@ -205,6 +206,8 @@ class ConceptNetClient:
             })
         else:
             self.session = None
+            if self.config.offline_only:
+                logger.info("🔒 Offline mode: API requests disabled")
         
         # Offline knowledge base (fallback)
         self._offline_kb: Dict[str, List[Dict]] = {}
