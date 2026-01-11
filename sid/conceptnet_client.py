@@ -389,14 +389,15 @@ class ConceptNetClient:
     
     def _make_request(self, endpoint: str, params: Optional[Dict] = None) -> Optional[Dict]:
         """Make HTTP request to ConceptNet API with retry logic."""
-        # Block all API calls in offline mode
+        # ABSOLUTE BLOCK: Never make API calls in offline mode
         if self.config.offline_only:
-            logger.debug("Offline mode enabled - skipping API call")
             return {"edges": []}
         
+        # ABSOLUTE BLOCK: No session = no API calls possible
         if not HAS_REQUESTS or not self.session:
-            return None
+            return {"edges": []}
         
+        # Dead code path - should never reach here in offline mode
         url = f"{self.config.api_base_url}{endpoint}"
         
         for attempt in range(self.config.max_retries):
@@ -409,24 +410,11 @@ class ConceptNetClient:
                 )
                 response.raise_for_status()
                 return response.json()
-            except requests.exceptions.Timeout:
-                logger.warning(f"Request timeout (attempt {attempt + 1})")
-            except requests.exceptions.HTTPError as e:
-                if e.response.status_code == 429:  # Rate limited
-                    wait_time = self.config.retry_delay_seconds * (2 ** attempt)
-                    logger.warning(f"Rate limited. Waiting {wait_time}s...")
-                    time.sleep(wait_time)
-                elif e.response.status_code == 404:
-                    return {"edges": []}
-                else:
-                    logger.error(f"HTTP error: {e}")
-                    return None
-            except requests.exceptions.RequestException as e:
-                logger.error(f"Request failed: {e}")
-                if attempt < self.config.max_retries - 1:
-                    time.sleep(self.config.retry_delay_seconds * (2 ** attempt))
+            except Exception:
+                # All exceptions return empty edges
+                return {"edges": []}
         
-        return None
+        return {"edges": []}
     
     def get_concept_uri(self, concept: str, language: Optional[str] = None) -> str:
         """Convert concept to ConceptNet URI format."""
@@ -523,48 +511,8 @@ class ConceptNetClient:
                         seen_edges.add(edge_key)
                         all_edges.append(ConceptNetEdge.from_api_response(edge_data))
         
-        # Try API if online and not in offline-only mode
-        if HAS_REQUESTS and self.session and not self.config.offline_only:
-            concept_uri = self.get_concept_uri(concept)
-            
-            # Query for edges where concept is subject
-            if as_subject:
-                response = self._make_request(
-                    f"/query",
-                    params={
-                        "start": concept_uri,
-                        "limit": self.config.max_edges_per_query
-                    }
-                )
-                if response and "edges" in response:
-                    for edge_data in response["edges"]:
-                        edge = ConceptNetEdge.from_api_response(edge_data)
-                        if edge.weight >= self.config.min_edge_weight:
-                            all_edges.append(edge)
-            
-            # Query for edges where concept is object
-            if as_object:
-                response = self._make_request(
-                    f"/query",
-                    params={
-                        "end": concept_uri,
-                        "limit": self.config.max_edges_per_query
-                    }
-                )
-                if response and "edges" in response:
-                    for edge_data in response["edges"]:
-                        edge = ConceptNetEdge.from_api_response(edge_data)
-                        if edge.weight >= self.config.min_edge_weight:
-                            all_edges.append(edge)
-            
-            # Cache the results
-            if self.cache and all_edges:
-                self.cache.set(
-                    cache_key, 
-                    [{"start": e.start, "rel": e.relation, "end": e.end, 
-                      "weight": e.weight, "surfaceText": e.surface_text}
-                     for e in all_edges]
-                )
+        # API CALLS COMPLETELY DISABLED - OFFLINE MODE ONLY
+        # All network request code has been removed to prevent any API calls
         
         return self._filter_edges(all_edges, relations, limit)
     
@@ -646,22 +594,8 @@ class ConceptNetClient:
                             if edge_data.get("end") == obj_uri or edge_data.get("end") == f"/c/en/{obj_normalized}":
                                 results.append(ConceptNetEdge.from_api_response(edge_data))
         
-        # Try API if not in offline-only mode
-        if HAS_REQUESTS and self.session and not self.config.offline_only:
-            params = {
-                "start": self.get_concept_uri(subject),
-                "rel": relation_uri,
-                "limit": self.config.max_edges_per_query
-            }
-            if object_concept:
-                params["end"] = self.get_concept_uri(object_concept)
-            
-            response = self._make_request("/query", params=params)
-            if response and "edges" in response:
-                for edge_data in response["edges"]:
-                    edge = ConceptNetEdge.from_api_response(edge_data)
-                    if edge.weight >= self.config.min_edge_weight:
-                        results.append(edge)
+        # API CALLS COMPLETELY DISABLED - OFFLINE MODE ONLY
+        # All network request code has been removed to prevent any API calls
         
         # Cache results
         if self.cache:
