@@ -345,9 +345,12 @@ def main():
         size = csv_path.stat().st_size
         print(f"  Size: {format_size(size)}")
         
-        response = input("\nRe-download? (yes/no): ").strip().lower()
-        if response in ['yes', 'y']:
-            csv_path.unlink()
+        if not auto_mode:
+            response = input("\nRe-download? (yes/no): ").strip().lower()
+            if response in ['yes', 'y']:
+                csv_path.unlink()
+            else:
+                print("Skipping download, using existing file.")
         else:
             print("Skipping download, using existing file.")
     
