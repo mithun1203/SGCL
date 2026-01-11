@@ -323,11 +323,17 @@ def main():
     print("\nTotal time: 2-4 hours")
     print("="*70)
     
-    # Confirm
-    response = input("\nProceed with full download? (yes/no): ").strip().lower()
-    if response not in ['yes', 'y']:
-        print("âœ— Cancelled by user")
-        return
+    # Check for auto-proceed flag
+    auto_mode = '--auto' in sys.argv or '--yes' in sys.argv
+    
+    if not auto_mode:
+        # Confirm
+        response = input("\nProceed with full download? (yes/no): ").strip().lower()
+        if response not in ['yes', 'y']:
+            print("Cancelled by user")
+            return
+    else:
+        print("\nAuto-proceeding with download (--auto flag detected)...")
     
     # Paths
     csv_path = DATA_DIR / "conceptnet-assertions-5.7.0.csv.gz"
@@ -393,4 +399,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n\nâœ— Interrupted by user. Exiting.")
         sys.exit(1)
+
 
